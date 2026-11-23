@@ -469,7 +469,7 @@ window.dispatchEvent(new Event('fbx-ready'));
 /* =====================================================================
    nice home board
    ===================================================================== */
-const VERSION = '1.0.0';
+const VERSION = '1.1.0';
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const el = html => { const t = document.createElement('template'); t.innerHTML = html.trim(); return t.content.firstElementChild; };
@@ -522,7 +522,7 @@ let USER = null;
 const P_DEF = {theme:'auto', accent:'#2f6fed', hour12:false, showSeconds:true, weatherName:'越谷市', weatherLat:35.8911, weatherLon:139.7909,
   geminiKey:'', aiModel:'gemini-flash-latest', youtubeKey:'', ytVol:1, lineCode:'', lineNotif:true, notifSound:true, wakeLock:true};
 let P = Object.assign({}, P_DEF, store.get('plus', {}));
-const B_DEF = {theme:'plus', accent:'', news:'nhk0', recipe:'world', tm:'timer', wake:true, nightDim:true, sec:'plus'};
+const B_DEF = {theme:'plus', accent:'', news:'nhk0', recipe:'world', tm:'timer', wake:true, nightDim:true, sec:'plus', muTerm:''};
 let B = Object.assign({}, B_DEF, store.get('prefs', {}));
 let alarms = store.get('alarms', []);
 const cfg = {
@@ -1292,9 +1292,10 @@ async function ytPopular(){ const j = await ytApi('videos', {part:'snippet', cha
 async function ytSearch(q){ const j = await ytApi('search', {part:'snippet', q, type:'video', videoCategoryId:'10', videoEmbeddable:'true', regionCode:'JP', relevanceLanguage:'ja', maxResults:'25'}); return (j.items || []).filter(v => v.id && v.id.videoId).map(ytItem).filter(x => !x.upcoming); }
 async function loadSongs(force){
   if (!P.youtubeKey){ renderMusic(); return; }
-  if (!force && songs && songs.items && songs.items.length && Date.now() - songs.at < 8 * 3600e3 && songs.key === P.youtubeKey.slice(-6)) return;
+  const term = (B.muTerm || '').trim();
+  if (!force && songs && songs.items && songs.items.length && Date.now() - songs.at < 8 * 3600e3 && songs.key === P.youtubeKey.slice(-6) && (songs.term || '') === term) return;
   if (songsLoading) return; songsLoading = true; renderMusic();
-  try{ const items = await ytPopular(); songs = {at:Date.now(), items, key:P.youtubeKey.slice(-6)}; store.set('songs', songs); songsErr = ''; }
+  try{ const items = term ? await ytSearch(term) : await ytPopular(); songs = {at:Date.now(), items, key:P.youtubeKey.slice(-6), term}; store.set('songs', songs); songsErr = ''; }
   catch(e){ songsErr = e.message; }
   songsLoading = false; renderMusic();
   if (sheetKind === 'music') renderMusicSheet();
@@ -1368,18 +1369,19 @@ function renderMusic(){
   }
   $('#muFind').hidden = false;
   const first = songs && songs.items && songs.items[0];
-  const poster = YTP.idx < 0 ? (first ? `<button class="mu-poster" data-mu="play" style="background-image:url('${esc(first.art)}')"><span class="pl">▶</span><span class="cap clamp1">人気の音楽を再生します</span></button>`
+  const poster = YTP.idx < 0 ? (first ? `<button class="mu-poster" data-mu="play" style="background-image:url('${esc(first.art)}')"><span class="pl">▶</span><span class="cap clamp1">${esc(recName())}を再生します</span></button>`
     : `<div class="mu-poster" style="display:grid;place-items:center;color:#fff;font-size:14px">${songsLoading ? '<div class="spin"></div>' : esc(songsErr || '曲がありません')}</div>`) : '';
   b.innerHTML = `<div class="mu-slot" id="muSlot">${poster}</div>
     <div class="mu-info"><div class="x" id="muNow"></div>
       <div class="mu-ctl"><button class="btn" data-mu="prev" aria-label="前の曲">⏮</button><button class="btn primary" data-mu="toggle" id="muPlay" aria-label="再生">▶</button><button class="btn" data-mu="next" aria-label="次の曲">⏭</button></div></div>`;
   renderMusicInfo(); requestAnimationFrame(ytPlace);
 }
+const recName = () => (songs && songs.term) ? `「${songs.term}」のおすすめ` : '人気の音楽（YouTube）';
 function renderMusicInfo(){
   const n = $('#muNow'); if (!n) return;
   const c = ytCur(), first = songs && songs.items && songs.items[0];
   n.innerHTML = c ? `<b class="clamp1">${c.live ? '<span class="livebadge">LIVE</span>' : ''}${esc(c.title)}</b><small class="clamp1">${esc(c.artist)}</small>`
-    : `<b class="clamp1">${first ? '人気の音楽（YouTube）' : '音楽'}</b><small class="clamp1">${first ? `${songs.items.length} 曲・${esc(first.title)} など` : ''}</small>`;
+    : `<b class="clamp1">${first ? esc(recName()) : '音楽'}</b><small class="clamp1">${first ? `${songs.items.length} 曲・${esc(first.title)} など` : ''}</small>`;
   const p = $('#muPlay'); if (p){ p.textContent = ytPlaying() ? '⏸' : '▶'; p.setAttribute('aria-label', ytPlaying() ? '一時停止' : '再生'); }
   if (sheetKind === 'music') $$('.mu-card').forEach(x => x.classList.toggle('on', c && x.dataset.yt === c.yt));
 }
@@ -1391,8 +1393,11 @@ function renderMusicSheet(){
   const b = $('#shBody'); if (!b) return;
   const list = ytResults || (songs && songs.items) || [], c = ytCur();
   const keep = $('#muQ') && document.activeElement === $('#muQ');
-  b.innerHTML = `<div class="mu-search"><input class="input" id="muQ" placeholder="曲名・アーティスト名で検索（例：YOASOBI）" value="${esc(ytQuery)}" enterkeyhint="search"><button class="btn primary" id="muGo">検索</button>${ytResults ? '<button class="btn" id="muPop">人気の音楽</button>' : ''}</div>
-    <p class="hint" style="margin-bottom:10px">${ytResults ? `「${esc(ytQuery)}」の検索結果` : '人気の音楽（YouTube・日本）'}　検索は1日に約100回までの上限があります。</p>
+  const term = (B.muTerm || '').trim(), isRec = ytResults && ytQuery === term;
+  b.innerHTML = `<div class="mu-search"><input class="input" id="muQ" placeholder="曲名・アーティスト名で検索（例：YOASOBI）" value="${esc(ytQuery)}" enterkeyhint="search"><button class="btn primary" id="muGo">検索</button>${ytResults ? '<button class="btn" id="muPop">おすすめ</button>' : ''}</div>
+    <div class="sgroup" style="display:flex;align-items:center;gap:10px;padding:10px 14px;margin-bottom:12px"><span style="flex:1;font-size:14.5px">⭐ ボードのおすすめ：<b>${term ? `「${esc(term)}」` : '人気の音楽'}</b></span>
+      ${ytResults && !isRec ? `<button class="btn sm primary" id="muSetRec">「${esc(ytQuery)}」をおすすめにする</button>` : ''}${term ? '<button class="btn sm" id="muClrRec">人気の音楽に戻す</button>' : ''}</div>
+    <p class="hint" style="margin-bottom:10px">${ytResults ? `「${esc(ytQuery)}」の検索結果` : recName()}　検索は1日に約100回までの上限があります。</p>
     <div class="mu-grid">${list.map((s, i) => `<button class="mu-card ${c && c.yt === s.yt ? 'on' : ''}" data-yt="${esc(s.yt)}" data-i="${i}"><div class="th" style="background-image:url('${esc(s.art)}')">${s.live ? '<span class="livebadge">LIVE</span>' : ''}</div>
       <div class="x"><b class="clamp2">${esc(s.title)}</b><small class="clamp1">${esc(s.artist)}</small></div></button>`).join('') || `<div class="empty">${songsLoading ? '<div class="spin"></div>' : esc(songsErr || '曲が見つかりませんでした')}</div>`}</div>`;
   const go = async () => {
@@ -1404,6 +1409,13 @@ function renderMusicSheet(){
   $('#muGo').onclick = go;
   $('#muQ').onkeydown = e => { if (e.key === 'Enter') go(); };
   if ($('#muPop')) $('#muPop').onclick = () => { ytResults = null; ytQuery = ''; renderMusicSheet(); };
+  const setRec = async t => {
+    B.muTerm = t; savePrefs();
+    if (t && ytResults && ytQuery === t && ytResults.length){ songs = {at:Date.now(), items:ytResults, key:P.youtubeKey.slice(-6), term:t}; store.set('songs', songs); }   // 検索結果をそのまま使います（検索の回数を節約）
+    else await loadSongs(true);
+    ytResults = null; ytQuery = ''; renderMusic(); renderMusicSheet(); toast(t ? `おすすめを「${t}」にしました` : 'おすすめを人気の音楽に戻しました'); };
+  if ($('#muSetRec')) $('#muSetRec').onclick = () => setRec(ytQuery);
+  if ($('#muClrRec')) $('#muClrRec').onclick = () => setRec('');
   b.querySelector('.mu-grid').onclick = e => { const t = e.target.closest('[data-i]'); if (!t) return; ytPlayQueue(list, +t.dataset.i); };
   if (keep) $('#muQ').focus();
 }
@@ -1627,6 +1639,9 @@ function renderSettings(){
       <div class="srow col"><div style="display:flex;gap:8px"><input class="input" id="stPlace" placeholder="市区町村名（例：越谷、札幌）" value=""><button class="btn" id="stPlaceGo">検索</button></div>
         <div class="hint">いまの地域：${esc(P.weatherName)}</div><div id="stPlaceRes" style="display:flex;flex-direction:column;gap:6px"></div></div>
     </div>
+    <div class="sgroup" data-sec="music"><h4>音楽のおすすめ</h4>
+      <div class="srow col"><span>キーワード</span><div style="display:flex;gap:8px"><input class="input" id="stMuTerm" value="${esc(B.muTerm || '')}" placeholder="空欄：人気の音楽（例：YOASOBI、アニメ、ジブリ）"><button class="btn primary" id="stMuSave">保存</button></div>
+        <span class="hint">入れた言葉で YouTube を検索して、音楽のタイルのおすすめにします。</span></div></div>
     <div class="sgroup" data-sec="keys"><h4>API キー</h4>
       <div class="srow col"><span>Gemini API キー（AI レシピ・翻訳）</span><div style="display:flex;gap:8px"><input class="input" id="stGem" type="password" value="${esc(P.geminiKey)}" placeholder="未登録" autocomplete="off" autocapitalize="off"><button class="btn" data-show="stGem">表示</button></div>
         <span class="hint">Google AI Studio で発行できます。</span></div>
@@ -1651,6 +1666,7 @@ document.addEventListener('click', async e => {
   if (t.dataset.ac != null){ B.accent = t.dataset.ac; savePrefs(); applyTheme(); renderSettings(); }
   if (t.dataset.sec2){ B.sec = t.dataset.sec2; savePrefs(); renderClock(true); renderSettings(); }
   if (t.dataset.show){ const i = $('#' + t.dataset.show); i.type = i.type === 'password' ? 'text' : 'password'; t.textContent = i.type === 'password' ? '表示' : '隠す'; }
+  if (t.id === 'stMuSave'){ B.muTerm = $('#stMuTerm').value.trim(); savePrefs(); toast(B.muTerm ? `おすすめを「${B.muTerm}」にしました` : 'おすすめを人気の音楽に戻しました'); await loadSongs(true); renderMusic(); }
   if (t.id === 'stKeySave'){
     const g = $('#stGem').value.trim(), y = $('#stYt').value.trim(), ych = y !== P.youtubeKey, gch = g !== P.geminiKey;
     P.geminiKey = g; P.youtubeKey = y; savePlus(); toast('API キーを保存しました');
