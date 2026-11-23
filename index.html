@@ -1,9 +1,1782 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="nice home board">
+<meta name="theme-color" content="#eceef3">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjNWI4Y2ZmIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMmY0ZmQ2Ii8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTYiIGZpbGw9InVybCgjZykiLz48cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSIyMiIgaGVpZ2h0PSIyNCIgcng9IjYiIGZpbGw9IiNmZmYiLz48cmVjdCB4PSIzOCIgeT0iMTIiIHdpZHRoPSIxNCIgaGVpZ2h0PSIxMSIgcng9IjQiIGZpbGw9IiNmZmYiIG9wYWNpdHk9Ii43NSIvPjxyZWN0IHg9IjM4IiB5PSIyNyIgd2lkdGg9IjE0IiBoZWlnaHQ9IjI1IiByeD0iNSIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjkiLz48cmVjdCB4PSIxMiIgeT0iNDAiIHdpZHRoPSIyMiIgaGVpZ2h0PSIxMiIgcng9IjUiIGZpbGw9IiNmZmYiIG9wYWNpdHk9Ii43NSIvPjwvc3ZnPg==">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<title>nice home board</title>
+<style>
+/* =====================================================================
+   nice home board
+   iPad（横向き）の全画面に、時計・天気・ニュース・LINE・タイマー・音楽・レシピを1画面にまとめます。
+   ===================================================================== */
+:root{
+  --bg:#eceef3; --tile:#ffffff; --tile2:#f3f4f7; --tile3:#e7e9ef; --line:#e3e5eb;
+  --text:#1b1d22; --sub:#6b7180; --danger:#e5342a; --ok:#1f9d55; --line-green:#06c755;
+  --accent:#2f6fed; --on-accent:#ffffff; --accent-text:#2f6fed;
+  --accent-soft:color-mix(in srgb, var(--accent) 13%, transparent);
+  --shadow:0 1px 2px rgba(15,20,40,.04), 0 10px 30px rgba(15,25,60,.07);
+  --r:26px; --gap:12px;
+  color-scheme:light;
+}
+:root[data-theme=dark]{
+  --bg:#08090b; --tile:#16171c; --tile2:#202128; --tile3:#2a2b33; --line:#2a2b33;
+  --text:#f1f1f4; --sub:#9b9ca8; --danger:#ff6259; --ok:#3ccf7d;
+  --accent-soft:color-mix(in srgb, var(--accent) 24%, transparent);
+  --shadow:none;
+  color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;background:var(--bg);color:var(--text);overflow:hidden;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic UI",Meiryo,sans-serif;
+  -webkit-font-smoothing:antialiased;-webkit-user-select:none;user-select:none;-webkit-text-size-adjust:100%}
+button{font:inherit;color:inherit;cursor:pointer}
+input,select,textarea{font:inherit;color:inherit}
+input,textarea{-webkit-user-select:text;user-select:text}
+img{display:block}
+[hidden]{display:none!important}
+.num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
+
+/* ---------- 部品 ---------- */
+.btn{appearance:none;border:none;border-radius:14px;min-height:46px;padding:8px 18px;font-size:16px;font-weight:650;
+  background:var(--tile2);color:var(--text);display:inline-flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap;
+  transition:transform .1s,opacity .2s,background .2s}
+.btn:active{transform:scale(.96)}
+.btn:disabled{opacity:.45;pointer-events:none}
+.btn.primary{background:var(--accent);color:var(--on-accent)}
+.btn.danger{background:color-mix(in srgb,var(--danger) 14%,transparent);color:var(--danger)}
+.btn.sm{min-height:38px;padding:5px 13px;font-size:14px;border-radius:12px}
+.btn.icon{width:46px;padding:0}
+.btn.sm.icon{width:38px}
+.btn.line{background:var(--line-green);color:#fff}
+.chips{display:flex;gap:6px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{border:none;min-height:34px;padding:5px 12px;border-radius:999px;background:var(--tile2);font-size:13.5px;font-weight:650;white-space:nowrap;color:var(--sub)}
+.chip.on{background:var(--accent);color:var(--on-accent)}
+.seg{display:flex;background:var(--tile2);border-radius:12px;padding:3px;gap:2px}
+.seg button{border:none;background:transparent;border-radius:10px;min-height:32px;padding:4px 11px;font-size:13.5px;font-weight:650;color:var(--sub);white-space:nowrap}
+.seg button.on{background:var(--tile);color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+:root[data-theme=dark] .seg button.on{background:var(--tile3)}
+.input{width:100%;min-height:48px;border:1.5px solid var(--line);background:var(--tile2);border-radius:14px;padding:10px 14px;font-size:16px;outline:none}
+.input:focus{border-color:var(--accent)}
+.hint{font-size:13.5px;color:var(--sub);line-height:1.6}
+.switch{position:relative;width:54px;height:32px;flex:none;display:inline-block}
+.switch input{opacity:0;width:0;height:0;position:absolute}
+.switch span{position:absolute;inset:0;border-radius:999px;background:var(--tile3);transition:.2s}
+.switch span::after{content:"";position:absolute;width:26px;height:26px;left:3px;top:3px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.3);transition:.2s}
+.switch input:checked + span{background:var(--accent)}
+.switch input:checked + span::after{transform:translateX(22px)}
+.badge{min-width:22px;height:22px;padding:0 7px;border-radius:11px;background:#ff3b30;color:#fff;font-size:12px;font-weight:800;display:inline-grid;place-items:center}
+.empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;color:var(--sub);padding:8px;font-size:14.5px;line-height:1.6}
+.empty .big{font-size:40px}
+.spin{width:28px;height:28px;border-radius:50%;border:3px solid var(--tile3);border-top-color:var(--accent);animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.clamp1{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.clamp2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+
+/* ---------- 盤面（1画面のレイアウト） ---------- */
+#board{position:fixed;inset:0;display:grid;gap:var(--gap);
+  padding:max(12px,env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) max(12px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));
+  grid-template-columns:1fr 1.12fr .95fr;grid-template-rows:1.12fr 1fr;
+  grid-template-areas:"clock news line" "timer music recipe"}
+.tile{background:var(--tile);border-radius:var(--r);box-shadow:var(--shadow);padding:15px 17px 16px;min-width:0;min-height:0;
+  display:flex;flex-direction:column;overflow:hidden;position:relative;container-type:size}
+.thead{display:flex;align-items:center;gap:8px;min-height:36px;flex:none;margin-bottom:8px}
+.thead h2{font-size:17px;font-weight:750;display:flex;align-items:center;gap:8px;white-space:nowrap}
+.thead .ic{width:30px;height:30px;border-radius:10px;display:grid;place-items:center;font-size:16px;background:var(--accent-soft);flex:none}
+.thead .sp{flex:1}
+.tbody{flex:1;min-height:0;display:flex;flex-direction:column}
+#tClock{grid-area:clock}#tNews{grid-area:news}#tLine{grid-area:line}#tTimer{grid-area:timer}#tMusic{grid-area:music}#tRecipe{grid-area:recipe}
+
+@media (orientation:portrait){
+  html,body{height:auto;overflow:visible}
+  #board{position:relative;inset:auto;min-height:100dvh;grid-template-columns:1fr 1fr;grid-template-rows:auto;
+    grid-template-areas:"clock clock" "news line" "timer recipe" "music music";grid-auto-rows:auto}
+  #tClock{height:400px}#tNews,#tLine{height:470px}#tTimer,#tRecipe{height:400px}#tMusic{height:auto;min-height:420px}
+  #tMusic .mu-slot{width:min(100%,640px);margin:0 auto}
+}
+
+/* ---------- 時計・天気 ---------- */
+.t-clock{color:#fff;background:
+  radial-gradient(120% 90% at 100% 0%, color-mix(in srgb,var(--accent) 55%, #fff 45%) 0%, transparent 55%),
+  linear-gradient(155deg, color-mix(in srgb,var(--accent) 88%, #fff 12%) 0%, color-mix(in srgb,var(--accent) 72%, #000 28%) 100%)}
+:root[data-theme=dark] .t-clock{background:
+  radial-gradient(120% 90% at 100% 0%, color-mix(in srgb,var(--accent) 45%, transparent) 0%, transparent 60%),
+  linear-gradient(155deg, color-mix(in srgb,var(--accent) 38%, #16171c) 0%, #121318 100%)}
+.ck-top{display:flex;align-items:center;gap:8px;flex:none}
+.ck-date{font-size:19px;font-weight:700;letter-spacing:.02em;flex:1;min-width:0}
+.ck-date small{display:block;font-size:13px;font-weight:600;opacity:.8;margin-top:1px}
+.glassbtn{border:none;width:40px;height:40px;border-radius:13px;background:rgba(255,255,255,.18);color:#fff;font-size:18px;display:grid;place-items:center;flex:none}
+.glassbtn:active{transform:scale(.94)}
+.ck-time{font-weight:250;line-height:.95;letter-spacing:-.035em;font-size:min(29cqw,30cqh);margin:2px 0 0 -4px;white-space:nowrap;display:flex;align-items:baseline}
+.ck-time .ap{font-size:.24em;font-weight:600;letter-spacing:0;margin-right:.18em;opacity:.85}
+.ck-time .sec{font-size:.3em;font-weight:400;opacity:.7;margin-left:.12em;letter-spacing:0}
+.ck-wx{display:flex;align-items:center;gap:12px;margin-top:auto}
+.ck-wx .em{font-size:min(48px,13cqh);line-height:1}
+.ck-wx .tp{font-size:min(44px,12cqh);font-weight:350;letter-spacing:-.02em}
+.ck-wx .ds{font-size:14px;line-height:1.45;opacity:.92;min-width:0}
+.ck-wx .ds b{font-size:16px;display:block}
+.ck-hours{display:grid;grid-template-columns:repeat(6,1fr);gap:4px;background:rgba(255,255,255,.14);border-radius:16px;padding:7px 6px;margin-top:10px;flex:none}
+.ck-hours div{display:flex;flex-direction:column;align-items:center;gap:1px;font-size:12.5px}
+.ck-hours .e{font-size:21px;line-height:1.25}
+.ck-hours b{font-size:14.5px;font-weight:650}
+.ck-hours .p{font-size:11px;opacity:.8}
+.ck-foot{display:flex;justify-content:space-between;gap:8px;font-size:13px;font-weight:600;opacity:.88;margin-top:9px;flex:none}
+.ck-foot span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@container (max-height:370px){ .ck-hours .p{display:none} .ck-hours .e{font-size:18px} }
+@container (max-height:335px){ .ck-hours{display:none} }
+
+/* ---------- ニュース ---------- */
+.nw-list{flex:1;min-height:0;overflow-y:auto;display:flex;flex-direction:column;gap:2px;margin:0 -8px;padding:0 0 2px;scrollbar-width:none;scroll-behavior:smooth}
+.nw-list::-webkit-scrollbar{display:none}
+.nw-item{border:none;background:transparent;text-align:left;display:flex;gap:11px;align-items:flex-start;padding:9px 10px;border-radius:15px;transition:background .4s}
+.nw-item.on{background:var(--accent-soft)}
+.nw-item .t{font-size:12.5px;color:var(--sub);font-weight:650;width:38px;flex:none;padding-top:2px}
+.nw-item .x{flex:1;min-width:0}
+.nw-item .x b{font-size:16px;font-weight:650;line-height:1.42}
+.nw-item .x small{display:block;font-size:12.5px;color:var(--sub);margin-top:2px}
+.nw-item img{width:64px;height:48px;border-radius:10px;object-fit:cover;flex:none;background:var(--tile2)}
+.nw-foot{font-size:12px;color:var(--sub);margin-top:6px;flex:none;display:flex;justify-content:space-between;gap:8px}
+
+/* ---------- LINE ---------- */
+.ln-ic{background:var(--line-green)!important;color:#fff;font-weight:900;font-size:10.5px!important;letter-spacing:-.02em}
+.ln-list{flex:1;min-height:0;overflow-y:auto;display:flex;flex-direction:column;gap:2px;margin:0 -8px;scrollbar-width:none}
+.ln-list::-webkit-scrollbar{display:none}
+.ln-row{border:none;background:transparent;text-align:left;display:flex;align-items:center;gap:11px;padding:8px 10px;border-radius:15px;width:100%}
+.ln-row:active{background:var(--tile2)}
+.ln-row .x{flex:1;min-width:0}
+.ln-row .x b{font-size:15.5px;display:block}
+.ln-row .x small{font-size:13.5px;color:var(--sub);display:block;margin-top:1px}
+.ln-row .m{display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex:none;font-size:11.5px;color:var(--sub)}
+.ln-row .m .badge{background:var(--line-green)}
+.av{width:42px;height:42px;border-radius:50%;color:#fff;font-weight:800;font-size:17px;display:grid;place-items:center;flex:none}
+.av.sm{width:32px;height:32px;font-size:13px}
+.ln-state{width:9px;height:9px;border-radius:50%;background:var(--sub);flex:none}
+.ln-state.ok{background:var(--line-green);box-shadow:0 0 0 4px color-mix(in srgb,var(--line-green) 22%,transparent)}
+.ln-state.err{background:var(--danger)}
+.ln-state.wait{background:#f5a524}
+
+/* ---------- タイマー・アラーム・ストップウォッチ ---------- */
+.tm-view{flex:1;min-height:0;display:flex;flex-direction:column}
+.tm-big{font-size:min(23cqw,22cqh);font-weight:300;letter-spacing:-.03em;text-align:center;line-height:1;margin:auto 0 0}
+.tm-big.ring{color:var(--danger);animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:.35}}
+.tm-sub{text-align:center;font-size:13.5px;color:var(--sub);min-height:20px;margin-top:6px}
+.tm-bar{height:6px;border-radius:3px;background:var(--tile2);overflow:hidden;margin:10px 4px 0}
+.tm-bar i{display:block;height:100%;background:var(--accent);border-radius:3px;transition:width .25s linear}
+.tm-pre{display:flex;gap:5px;justify-content:center;margin-top:auto;padding-top:10px;flex-wrap:nowrap}
+.tm-pre .chip{min-height:38px;padding:5px 10px;font-size:14px;color:var(--text);flex:1 1 0;min-width:0}
+.tm-btns{display:flex;gap:8px;margin-top:10px}
+.tm-btns .btn{flex:1}
+.al-list{flex:1;min-height:0;overflow-y:auto;display:flex;flex-direction:column;gap:6px;scrollbar-width:none}
+.al-list::-webkit-scrollbar{display:none}
+.al-row{display:flex;align-items:center;gap:10px;background:var(--tile2);border-radius:16px;padding:8px 12px 8px 14px}
+.al-row .x{flex:1;min-width:0;border:none;background:none;text-align:left;padding:0}
+.al-row .x b{font-size:26px;font-weight:350;letter-spacing:-.01em;display:block;line-height:1.1}
+.al-row .x small{font-size:12.5px;color:var(--sub)}
+.al-row.off .x b{color:var(--sub)}
+.sw-laps{flex:1;min-height:0;overflow-y:auto;font-size:13.5px;color:var(--sub);margin-top:8px;padding:0 6px;scrollbar-width:none}
+.sw-laps div{display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid var(--line)}
+
+/* ---------- 音楽 ---------- */
+.mu-slot{position:relative;width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#000;flex:none}
+.mu-poster{position:absolute;inset:0;border:none;padding:0;background:#000 center/cover no-repeat;display:grid;place-items:center}
+.mu-poster::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.55))}
+.mu-poster .pl{position:relative;z-index:1;width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.92);color:#111;font-size:26px;display:grid;place-items:center;padding-left:4px;box-shadow:0 6px 20px rgba(0,0,0,.35)}
+.mu-poster .cap{position:absolute;z-index:1;left:12px;right:12px;bottom:10px;color:#fff;font-size:13px;font-weight:650;text-align:left}
+.mu-info{display:flex;align-items:center;gap:10px;margin-top:10px;min-height:0;flex:none}
+.mu-info .x{flex:1;min-width:0}
+.mu-info .x b{display:block;font-size:15px}
+.mu-info .x small{display:block;font-size:12.5px;color:var(--sub);margin-top:1px}
+.mu-ctl{display:flex;gap:6px;flex:none}
+.mu-ctl .btn{width:44px;min-height:44px;padding:0;font-size:17px;border-radius:50%}
+.mu-ctl .btn.primary{width:50px;min-height:50px;font-size:19px}
+@container (max-height:330px){ .mu-info{margin-top:6px} .mu-info .x small{display:none} }
+#ytDock{position:fixed;z-index:40;border-radius:16px;overflow:hidden;background:#000;transition:left .25s,top .25s,width .25s,height .25s,box-shadow .25s}
+#ytDock.float{z-index:95;box-shadow:0 18px 50px rgba(0,0,0,.45)}
+body.ytfloat .sh-body:not(.fill){padding-bottom:240px}
+#ytDock iframe,#ytPlayer{width:100%;height:100%;border:0;display:block}
+.livebadge{display:inline-block;background:#e5342a;color:#fff;font-weight:800;font-size:11px;padding:1px 6px;border-radius:5px;margin-right:5px;vertical-align:1px}
+
+/* ---------- レシピ ---------- */
+.rc-card{flex:1;min-height:0;border-radius:18px;overflow:hidden;position:relative;background:var(--tile2);border:none;padding:0;text-align:left;display:block;width:100%}
+.rc-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.rc-card .ov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 35%,rgba(0,0,0,.72) 100%)}
+.rc-card .cap{position:absolute;left:14px;right:14px;bottom:12px;color:#fff}
+.rc-card .cap small{font-size:12.5px;font-weight:650;opacity:.9;display:block;margin-bottom:3px}
+.rc-card .cap b{font-size:19px;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-shadow:0 1px 8px rgba(0,0,0,.35)}
+.rc-ai{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:16px 18px;gap:6px;
+  background:radial-gradient(90% 80% at 85% 10%, color-mix(in srgb,#ffb648 55%, transparent), transparent 60%),linear-gradient(150deg,#ff7a59,#e2456f 60%,#8f3fd1);color:#fff}
+.rc-ai .em{font-size:min(56px,18cqh);line-height:1}
+.rc-ai b{font-size:20px;line-height:1.35}
+.rc-ai p{font-size:13.5px;line-height:1.55;opacity:.95;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.rc-ai small{font-size:12.5px;font-weight:650;opacity:.9}
+.rc-btns{display:flex;gap:8px;margin-top:10px;flex:none}
+.rc-btns .btn{flex:1}
+@container (max-height:330px){ .rc-ai p{-webkit-line-clamp:2} }
+
+/* ---------- 詳細画面（シート） ---------- */
+.sheet-bg{position:fixed;inset:0;z-index:80;background:rgba(10,12,20,.38);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:grid;place-items:center;padding:20px;animation:fade .2s}
+@keyframes fade{from{opacity:0}}
+.sheet{width:min(1000px,100%);height:min(740px,100%);background:var(--tile);border-radius:30px;box-shadow:0 30px 80px rgba(0,0,0,.35);display:flex;flex-direction:column;overflow:hidden;animation:pop .28s cubic-bezier(.2,1.1,.3,1)}
+.sheet.narrow{width:min(640px,100%)}
+@keyframes pop{from{transform:translateY(24px) scale(.97);opacity:0}}
+.sh-head{display:flex;align-items:center;gap:10px;padding:14px 16px 12px 22px;border-bottom:1px solid var(--line);flex:none}
+.sh-head h3{font-size:20px;font-weight:750;flex:1;min-width:0;display:flex;align-items:center;gap:10px}
+.sh-body{flex:1;min-height:0;overflow-y:auto;padding:18px 22px 24px;-webkit-overflow-scrolling:touch}
+.sh-body.fill{display:flex;flex-direction:column;overflow:hidden;padding:0}
+.sgroup{background:var(--tile2);border-radius:20px;padding:6px 16px;margin-bottom:14px}
+.sgroup h4{font-size:13px;color:var(--sub);font-weight:700;padding:10px 0 4px}
+.srow{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 0;border-top:1px solid var(--line);min-height:56px;font-size:16px}
+.sgroup h4 + .srow{border-top:none}
+.srow.col{flex-direction:column;align-items:stretch}
+.srow .r{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+@media (orientation:portrait){ .cols2{grid-template-columns:1fr} }
+
+/* 天気の詳細 */
+.wx-hours{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;scrollbar-width:thin}
+.wx-hours div{flex:none;width:62px;background:var(--tile2);border-radius:16px;padding:9px 4px;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:13px}
+.wx-hours .e{font-size:24px}
+.wx-days{display:flex;flex-direction:column;gap:4px;margin-top:14px}
+.wx-days div{display:grid;grid-template-columns:110px 40px 1fr 60px 90px;align-items:center;gap:10px;background:var(--tile2);border-radius:14px;padding:10px 14px;font-size:15.5px}
+.wx-days .e{font-size:24px}
+.wx-days .bar{height:6px;border-radius:3px;background:linear-gradient(90deg,#5aa9ff,#ffb648)}
+.wx-now{display:flex;align-items:center;gap:18px;margin-bottom:16px}
+.wx-now .e{font-size:72px}
+.wx-now .t{font-size:56px;font-weight:300}
+
+/* ニュースの記事 */
+.art img{width:100%;max-height:360px;object-fit:cover;border-radius:18px;margin-bottom:14px}
+.art h1{font-size:24px;line-height:1.45;margin-bottom:8px}
+.art .meta{font-size:13.5px;color:var(--sub);margin-bottom:14px}
+.art .body{font-size:17px;line-height:1.95;white-space:pre-wrap;-webkit-user-select:text;user-select:text}
+
+/* LINE のトーク */
+.lnv{display:grid;grid-template-columns:300px minmax(0,1fr);height:100%;min-height:0}
+.lnv .list{border-right:1px solid var(--line);overflow-y:auto;padding:8px}
+.lnv .ln-row.on{background:var(--accent-soft)}
+.lnv .conv{display:flex;flex-direction:column;min-height:0}
+.lnv .msgs{flex:1;min-height:0;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;background:color-mix(in srgb,#8cabd9 16%,var(--tile))}
+.lnv .ch{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line)}
+.lnv .ch b{font-size:17px;flex:1;min-width:0}
+.lnday{text-align:center}.lnday span{display:inline-block;font-size:12px;color:#fff;background:rgba(0,0,0,.28);padding:3px 12px;border-radius:999px}
+.lnmsg{display:flex;align-items:flex-end;gap:8px;max-width:86%}
+.lnmsg .av{align-self:flex-start}
+.lnb{display:flex;flex-direction:column;gap:3px;min-width:0}
+.lnsn{font-size:12px;color:var(--sub);padding-left:4px}
+.lnbub{background:var(--tile);padding:10px 14px;border-radius:4px 18px 18px 18px;font-size:16.5px;line-height:1.55;word-break:break-word;box-shadow:0 1px 2px rgba(0,0,0,.06);-webkit-user-select:text;user-select:text}
+.lnt{font-size:11px;color:var(--sub);flex:none}
+.lnfoot{padding:10px 14px;display:flex;align-items:center;gap:10px;border-top:1px solid var(--line)}
+@media (orientation:portrait){ .lnv{grid-template-columns:1fr} .lnv.sel .list{display:none} .lnv:not(.sel) .conv{display:none} }
+
+/* 音楽をさがす */
+.mu-search{display:flex;gap:8px;margin-bottom:12px}
+.mu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;padding-bottom:210px}
+.mu-card{border:none;background:var(--tile2);border-radius:16px;overflow:hidden;text-align:left;padding:0}
+.mu-card .th{aspect-ratio:16/9;background:#000 center/cover no-repeat;position:relative}
+.mu-card .th .livebadge{position:absolute;left:8px;top:8px}
+.mu-card.on{outline:3px solid var(--accent)}
+.mu-card .x{padding:9px 11px 11px}
+.mu-card .x b{font-size:14px;line-height:1.4}
+.mu-card .x small{display:block;font-size:12px;color:var(--sub);margin-top:3px}
+
+/* レシピの詳細 */
+.rcd-hero{width:100%;aspect-ratio:16/9;max-height:340px;object-fit:cover;border-radius:20px;margin-bottom:14px}
+.rcd-aihero{border-radius:20px;padding:22px;margin-bottom:14px;color:#fff;background:linear-gradient(150deg,#ff7a59,#e2456f 60%,#8f3fd1)}
+.rcd-aihero .em{font-size:60px}
+.rcd h1{font-size:24px;line-height:1.4}
+.rcd .meta{font-size:14px;color:var(--sub);margin:6px 0 14px}
+.rcd h4{font-size:16px;margin:16px 0 8px}
+.rcd .ing{display:grid;grid-template-columns:1fr auto;gap:0 14px;background:var(--tile2);border-radius:16px;padding:6px 16px}
+.rcd .ing span{padding:8px 0;border-bottom:1px solid var(--line);font-size:15.5px}
+.rcd .ing span:nth-last-child(-n+2){border-bottom:none}
+.rcd .ing span:nth-child(even){color:var(--sub);text-align:right}
+.rcd ol{padding-left:0;list-style:none;counter-reset:st;display:flex;flex-direction:column;gap:10px}
+.rcd ol li{counter-increment:st;display:grid;grid-template-columns:32px 1fr;gap:10px;font-size:16px;line-height:1.7}
+.rcd ol li::before{content:counter(st);width:30px;height:30px;border-radius:50%;background:var(--accent);color:var(--on-accent);font-weight:800;display:grid;place-items:center;font-size:14px;margin-top:2px}
+.rcd .tip{background:var(--accent-soft);border-radius:16px;padding:12px 16px;margin-top:14px;font-size:15px;line-height:1.7}
+.ai-ask{display:flex;gap:8px;margin-bottom:12px}
+
+/* アラームの編集 */
+.al-time{font-size:56px;font-weight:300;text-align:center;border:none;background:var(--tile2);border-radius:20px;width:100%;padding:10px;min-height:96px}
+.days{display:flex;gap:6px;justify-content:space-between}
+.days button{flex:1;min-height:46px;border:none;border-radius:14px;background:var(--tile2);font-weight:700;font-size:16px}
+.days button.on{background:var(--accent);color:var(--on-accent)}
+
+/* ---------- 鳴動画面 ---------- */
+#ring{position:fixed;inset:0;z-index:120;display:none;flex-direction:column;align-items:center;justify-content:center;gap:16px;color:#fff;text-align:center;padding:24px;
+  background:radial-gradient(80% 60% at 50% 40%, color-mix(in srgb,var(--accent) 70%, #fff 30%), color-mix(in srgb,var(--accent) 60%, #000 40%))}
+#ring.show{display:flex;animation:fade .3s}
+#ring .ic{font-size:96px;animation:shake 1s infinite}
+@keyframes shake{0%,100%{transform:rotate(0)}20%{transform:rotate(-12deg)}40%{transform:rotate(12deg)}60%{transform:rotate(-8deg)}80%{transform:rotate(8deg)}}
+#ring .tt{font-size:40px;font-weight:800}
+#ring .tm{font-size:96px;font-weight:250;letter-spacing:-.03em}
+#ring .sb{font-size:18px;opacity:.9}
+#ring .row{display:flex;gap:14px;margin-top:10px}
+#ring .btn{min-width:200px;min-height:72px;font-size:22px;border-radius:22px;background:#fff;color:#111}
+#ring .btn.ghost{background:rgba(255,255,255,.22);color:#fff}
+
+/* ---------- お知らせ ---------- */
+#banners{position:fixed;top:calc(env(safe-area-inset-top) + 14px);left:50%;transform:translateX(-50%);z-index:110;display:flex;flex-direction:column;gap:8px;width:min(560px,calc(100% - 32px));pointer-events:none}
+.banner{pointer-events:auto;display:flex;align-items:center;gap:12px;text-align:left;border:1px solid rgba(255,255,255,.25);border-radius:20px;padding:12px 16px;
+  background:rgba(20,22,30,.86);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);color:#fff;box-shadow:0 16px 40px rgba(0,0,0,.35);animation:bin .35s cubic-bezier(.2,1.2,.4,1);transition:opacity .3s,transform .3s}
+.banner .i{font-size:24px;flex:none}
+.banner .tx{flex:1;min-width:0}
+.banner b{display:block;font-size:15px}
+.banner small{display:block;font-size:13.5px;opacity:.85;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.banner.out{opacity:0;transform:translateY(-12px)}
+@keyframes bin{from{transform:translateY(-20px);opacity:0}}
+#toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom) + 24px);transform:translateX(-50%) translateY(20px);z-index:130;background:rgba(20,22,30,.92);color:#fff;
+  padding:13px 22px;border-radius:16px;font-size:15px;font-weight:600;max-width:min(640px,calc(100% - 32px));text-align:center;line-height:1.5;opacity:0;pointer-events:none;transition:.25s}
+#toast.show{opacity:1;transform:translateX(-50%)}
+#toast.err{background:#c62f26}
+#audioNotice{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom) + 18px);transform:translateX(-50%);z-index:60;background:rgba(20,22,30,.82);color:#fff;font-size:13.5px;font-weight:600;padding:9px 16px;border-radius:999px;pointer-events:none}
+
+/* ---------- ログイン ---------- */
+#login{position:fixed;inset:0;z-index:100;background:var(--bg);display:grid;place-items:center;padding:24px;overflow:auto}
+.lg-card{width:min(460px,100%);background:var(--tile);border-radius:30px;padding:30px 28px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px}
+.lg-logo{display:flex;align-items:center;gap:12px;font-size:26px;font-weight:800;letter-spacing:-.01em;margin-bottom:4px}
+.lg-logo svg{width:52px;height:52px;flex:none}
+.lg-or{display:flex;align-items:center;gap:10px;color:var(--sub);font-size:13px}
+.lg-or::before,.lg-or::after{content:"";flex:1;height:1px;background:var(--line)}
+.lg-msg{font-size:14px;line-height:1.6;min-height:0}
+.lg-msg.err{color:var(--danger)}.lg-msg.ok{color:var(--ok)}
+.gbtn{background:#fff;color:#1f1f1f;border:1.5px solid #dadce0}
+:root[data-theme=dark] .gbtn{background:#202124;color:#e8eaed;border-color:#5f6368}
+
+</style>
 </head>
 <body>
+<main id="board">
+  <!-- 時計・天気 -->
+  <section class="tile t-clock" id="tClock">
+    <div class="ck-top">
+      <div class="ck-date" id="ckDate"></div>
+      <button class="glassbtn" id="ckWxBtn" aria-label="天気の詳細">🌤️</button>
+      <button class="glassbtn" id="ckSet" aria-label="設定">⚙︎</button>
+    </div>
+    <div class="ck-time num" id="ckTime"></div>
+    <div class="ck-wx" id="ckWx"></div>
+    <div class="ck-hours num" id="ckHours"></div>
+    <div class="ck-foot"><span id="ckAlarm"></span><span id="ckPlace"></span></div>
+  </section>
 
+  <!-- ニュース -->
+  <section class="tile" id="tNews">
+    <div class="thead"><h2><span class="ic">📰</span>ニュース</h2><span class="sp"></span><div class="chips" id="nwTabs"></div></div>
+    <div class="nw-list" id="nwList"></div>
+    <div class="nw-foot"><span id="nwSrc"></span><span id="nwUp"></span></div>
+  </section>
+
+  <!-- LINE -->
+  <section class="tile" id="tLine">
+    <div class="thead"><h2><span class="ic ln-ic">LINE</span>LINE</h2><span class="badge" id="lnBadge" hidden></span><span class="sp"></span><span class="ln-state" id="lnState"></span></div>
+    <div class="tbody" id="lnBody"></div>
+  </section>
+
+  <!-- タイマー・アラーム・ストップウォッチ -->
+  <section class="tile" id="tTimer">
+    <div class="thead"><div class="seg" id="tmTabs">
+      <button data-tm="timer">⏳ タイマー</button><button data-tm="alarm">⏰ アラーム</button><button data-tm="sw">⏱ ストップウォッチ</button></div></div>
+    <div class="tm-view" id="tmBody"></div>
+  </section>
+
+  <!-- 音楽（YouTube） -->
+  <section class="tile" id="tMusic">
+    <div class="thead"><h2><span class="ic">🎵</span>音楽</h2><span class="sp"></span><button class="btn sm" id="muFind">🔍 曲をさがす</button></div>
+    <div class="tbody" id="muBody"></div>
+  </section>
+
+  <!-- レシピ -->
+  <section class="tile" id="tRecipe">
+    <div class="thead"><h2><span class="ic">🍳</span>レシピ</h2><span class="sp"></span><div class="seg" id="rcTabs"><button data-rc="world">🌍 世界</button><button data-rc="ai">✨ AI</button></div></div>
+    <div class="tbody" id="rcBody"></div>
+  </section>
+</main>
+
+<!-- YouTube の再生画面（タイルの上に重ねて表示します） -->
+<div id="ytDock" hidden><div id="ytPlayer"></div></div>
+
+<!-- 鳴動画面 -->
+<div id="ring" role="alertdialog" aria-live="assertive">
+  <div class="ic" id="ringIcon">⏰</div>
+  <div class="tt" id="ringTitle"></div>
+  <div class="tm num" id="ringTime"></div>
+  <div class="sb" id="ringSub"></div>
+  <div class="row"><button class="btn ghost" id="ringSnooze">5分後にもう一度</button><button class="btn" id="ringStop">止める</button></div>
+</div>
+
+<!-- ログイン -->
+<div id="login" hidden>
+  <div class="lg-card">
+    <div class="lg-logo" id="lgLogo"></div>
+    <p class="hint">たいアカウントでログインすると、nicehome+ の設定（天気の地域・Gemini と YouTube のキー・LINE の通知）やアラームを、そのまま使えます。</p>
+    <button class="btn gbtn" id="lgGoogle"><svg width="20" height="20" viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>Google でログイン</button>
+    <div class="lg-or">または</div>
+    <input class="input" id="lgEmail" type="email" placeholder="メールアドレス" autocomplete="email" autocapitalize="off">
+    <input class="input" id="lgPass" type="password" placeholder="パスワード" autocomplete="current-password">
+    <button class="btn primary" id="lgSubmit">ログイン</button>
+    <div class="lg-msg" id="lgMsg"></div>
+    <button class="btn" id="lgGuest" style="background:transparent;color:var(--sub)">ログインせずに使う（この端末だけに保存）</button>
+  </div>
+</div>
+
+<div id="banners"></div>
+<div id="toast"></div>
+<div id="audioNotice" hidden>画面をタップすると、アラームや通知の音が鳴るようになります</div>
+
+<script type="module">
+/* たいアカウント（Firebase プロジェクト tai-account）— nicehome+ と同じアカウント・同じデータを使います。
+   Firebase の apiKey は公開されても問題のない種類のキーです。データは Firestore のセキュリティルールで守ります。 */
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
+import {
+  getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, GoogleAuthProvider, signInWithPopup
+} from "https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js";
+import {
+  getFirestore, initializeFirestore, persistentLocalCache, persistentMultipleTabManager,
+  doc, collection, setDoc, getDoc, deleteDoc, onSnapshot, serverTimestamp, query, orderBy, limit
+} from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDNKPM8KCe6RGWuaQOUDorBtjCD3IGoe1E",
+  authDomain: "tai-account.firebaseapp.com",
+  projectId: "tai-account",
+  storageBucket: "tai-account.firebasestorage.app",
+  messagingSenderId: "579819210756",
+  appId: "1:579819210756:web:7eba19a9d4c2ac7697cd51"
+};
+const app = initializeApp(firebaseConfig);
+let db;
+try{ db = initializeFirestore(app, { localCache: persistentLocalCache({ tabManager: persistentMultipleTabManager() }) }); }
+catch(e){ db = getFirestore(app); }
+const auth = getAuth(app);
+window.FBX = {
+  app, auth, db, googleProvider: new GoogleAuthProvider(),
+  onAuthStateChanged, signInWithEmailAndPassword, signOut, signInWithPopup,
+  doc, collection, setDoc, getDoc, deleteDoc, onSnapshot, serverTimestamp, query, orderBy, limit
+};
+window.dispatchEvent(new Event('fbx-ready'));
+</script>
+
+<script>
+/* =====================================================================
+   nice home board
+   ===================================================================== */
+const VERSION = '1.0.0';
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const el = html => { const t = document.createElement('template'); t.innerHTML = html.trim(); return t.content.firstElementChild; };
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const pad = (n, l = 2) => String(n).padStart(l, '0');
+const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+const WD = '日月火水木金土';
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const enc = encodeURIComponent;
+const dateKey = d => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+const shuffle = a => { const b = [...a]; for (let i = b.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [b[i], b[j]] = [b[j], b[i]]; } return b; };
+function decodeHtml(s){ const t = document.createElement('textarea'); t.innerHTML = String(s || ''); return t.value; }
+function stripTags(s){ const d = document.createElement('div'); d.innerHTML = String(s || ''); return (d.textContent || '').trim(); }
+function fmtAgo(t){
+  if (!t) return '';
+  const m = Math.floor((Date.now() - t) / 60000);
+  if (m < 1) return 'たった今'; if (m < 60) return `${m}分前`;
+  const h = Math.floor(m / 60); if (h < 24) return `${h}時間前`;
+  const d = new Date(t); return `${d.getMonth() + 1}/${d.getDate()}`;
+}
+const fmtHMs = t => { const d = new Date(t); return `${d.getHours()}:${pad(d.getMinutes())}`; };
+async function fetchT(url, opt = {}, ms = 12000){
+  const ctl = new AbortController(), to = setTimeout(() => ctl.abort(), ms);
+  try{ return await fetch(url, Object.assign({}, opt, {signal:ctl.signal})); }
+  finally{ clearTimeout(to); }
+}
+
+/* ---------- 保存 ----------
+   nhb_active … この端末で使っているアカウント（uid / 'guest' / 空＝未ログイン）
+   データは「nhb:<uid>:キー」に保存します。nicehome+ と共通のもの（設定・アラーム）は、
+   Firestore の niceHomePlus/<uid> に、nicehome+ と同じ形で保存します。 */
+const LS = {
+  get(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } },
+  set(k, v){ try{ localStorage.setItem(k, v); return true; }catch(e){ return false; } },
+  del(k){ try{ localStorage.removeItem(k); }catch(e){} }
+};
+const ACTIVE = LS.get('nhb_active') || '';
+const NS = `nhb:${ACTIVE || '_'}:`;
+const DEVICE_ID = (() => { let d = LS.get('nhb_device'); if (!d){ d = 'b' + Math.random().toString(36).slice(2, 10); LS.set('nhb_device', d); } return d; })();
+const store = {
+  get(k, d){ const v = LS.get(NS + k); if (v == null) return d; try{ return JSON.parse(v); }catch(e){ return d; } },
+  set(k, v){ LS.set(NS + k, JSON.stringify(v)); },
+  del(k){ LS.del(NS + k); }
+};
+let USER = null;
+
+/* ---------- 設定 ----------
+   P … nicehome+ と共通の設定（そのままの形で保存し、書き戻すときもほかの項目を消さないようにします）
+   B … このボード専用の設定 */
+const P_DEF = {theme:'auto', accent:'#2f6fed', hour12:false, showSeconds:true, weatherName:'越谷市', weatherLat:35.8911, weatherLon:139.7909,
+  geminiKey:'', aiModel:'gemini-flash-latest', youtubeKey:'', ytVol:1, lineCode:'', lineNotif:true, notifSound:true, wakeLock:true};
+let P = Object.assign({}, P_DEF, store.get('plus', {}));
+const B_DEF = {theme:'plus', accent:'', news:'nhk0', recipe:'world', tm:'timer', wake:true, nightDim:true, sec:'plus'};
+let B = Object.assign({}, B_DEF, store.get('prefs', {}));
+let alarms = store.get('alarms', []);
+const cfg = {
+  theme(){ return B.theme === 'plus' ? (P.theme || 'auto') : B.theme; },
+  accent(){ return B.accent || P.accent || '#2f6fed'; },
+  seconds(){ return B.sec === 'plus' ? P.showSeconds !== false : B.sec === 'on'; }
+};
+
+/* ---------- nicehome+ との共有（たいアカウント） ---------- */
+const SHARED_KEYS = ['settings', 'alarms', 'nhBoard'];
+const Shared = {
+  uid:null, unsub:null, gotFirst:false, remoteHasSettings:false, state:'none',
+  meta:store.get('meta', {}), pending:new Set(store.get('pending', [])), timer:null,
+  ref(){ return FBX.doc(FBX.db, 'niceHomePlus', this.uid); },
+  start(uid){
+    if (this.unsub) return;
+    this.uid = uid; this.state = 'syncing';
+    this.unsub = FBX.onSnapshot(this.ref(), snap => this.onRemote(snap.exists() ? snap.data() : null), e => { console.warn('shared', e); this.state = 'error'; renderSettingsState(); });
+  },
+  stop(){ if (this.unsub) this.unsub(); this.unsub = null; this.uid = null; this.gotFirst = false; },
+  onRemote(data){
+    const d = (data && data.d) || {};
+    this.remoteHasSettings = !!d.settings;
+    for (const k of SHARED_KEYS){
+      const o = d[k];
+      if (!o || this.pending.has(k) || (o.t || 0) <= (this.meta[k] || 0)) continue;
+      let v = null; try{ v = o.v == null ? null : JSON.parse(o.v); }catch(e){ continue; }
+      this.meta[k] = o.t;
+      if (k === 'settings' && v){ P = Object.assign({}, P_DEF, v); store.set('plus', P); }
+      if (k === 'alarms'){ alarms = Array.isArray(v) ? v : []; store.set('alarms', alarms); }
+      if (k === 'nhBoard' && v){ B = Object.assign({}, B_DEF, v); store.set('prefs', B); }
+      onSharedChanged(k);
+    }
+    store.set('meta', this.meta);
+    if (!this.gotFirst){ this.gotFirst = true; this.flush(); }
+    this.state = this.pending.size ? 'syncing' : 'ok'; renderSettingsState();
+  },
+  /* 共有するデータを書き込みます（新しい方が優先されます） */
+  put(k){
+    this.meta[k] = Math.max(Date.now(), (this.meta[k] || 0) + 1); store.set('meta', this.meta);
+    if (!USER) return;
+    this.pending.add(k); store.set('pending', [...this.pending]);
+    clearTimeout(this.timer); this.timer = setTimeout(() => this.flush(), 600);
+  },
+  async flush(){
+    if (!this.uid || !window.FBX || !this.pending.size || !this.gotFirst) return;
+    const d = {}, keys = [...this.pending];
+    keys.forEach(k => {
+      const v = k === 'settings' ? P : k === 'alarms' ? alarms : B;
+      d[k] = {v:JSON.stringify(v), t:this.meta[k] || Date.now(), dev:DEVICE_ID};
+    });
+    try{
+      await FBX.setDoc(this.ref(), {d, updatedAt:FBX.serverTimestamp()}, {merge:true});
+      keys.forEach(k => this.pending.delete(k)); store.set('pending', [...this.pending]);
+      this.state = 'ok';
+    }catch(e){
+      console.warn('shared flush', e); this.state = navigator.onLine === false ? 'offline' : 'error';
+      clearTimeout(this.timer); this.timer = setTimeout(() => this.flush(), 15000);
+    }
+    renderSettingsState();
+  }
+};
+window.addEventListener('online', () => Shared.flush());
+function savePlus(){ store.set('plus', P); Shared.put('settings'); }
+function savePrefs(){ store.set('prefs', B); Shared.put('nhBoard'); }
+function saveAlarms(){ store.set('alarms', alarms); Shared.put('alarms'); renderTimerTile(); renderClockFoot(); }
+function onSharedChanged(k){
+  if (k === 'settings' || k === 'nhBoard'){
+    applyTheme(); renderClock(true); renderNewsTabs(); renderRecipeTabs(); renderTmTabs();
+    const wkey = `${P.weatherLat},${P.weatherLon}`; if (!wx || wx.key !== wkey) loadWeather(true); else renderWeather();
+    lineListen(); loadSongs(); renderMusic(); renderRecipe(); renderLineTile(); loadNews();
+    B.recipe === 'ai' ? loadAI() : loadWorld();
+    if (P.geminiKey) translateWorldTitles();
+    if (sheetKind === 'settings') renderSettings();
+  }
+  if (k === 'alarms'){ renderTimerTile(); renderClockFoot(); }
+}
+
+/* ---------- 見た目（テーマ・アクセントカラー） ---------- */
+function hexToRgb(hex){ let v = String(hex || '#2f6fed').replace('#', ''); if (v.length === 3) v = v.split('').map(c => c + c).join(''); const n = parseInt(v, 16) || 0; return [(n >> 16) & 255, (n >> 8) & 255, n & 255]; }
+function lum(rgb){ const f = c => { c /= 255; return c <= .03928 ? c / 12.92 : Math.pow((c + .055) / 1.055, 2.4); }; return .2126 * f(rgb[0]) + .7152 * f(rgb[1]) + .0722 * f(rgb[2]); }
+const isNight = () => { const h = new Date().getHours(); return h >= 18 || h < 6; };
+function isDark(){ const t = cfg.theme(); return t === 'dark' || (t === 'auto' && isNight()); }
+function applyTheme(){
+  const r = document.documentElement, dark = isDark(), acc = cfg.accent(), L = lum(hexToRgb(acc));
+  r.dataset.theme = dark ? 'dark' : 'light';
+  r.style.setProperty('--accent', acc);
+  r.style.setProperty('--on-accent', L > .45 ? '#111111' : '#ffffff');
+  r.style.setProperty('--accent-text', dark ? (L < .12 ? '#8fb0ff' : acc) : (L > .45 ? '#1b1d22' : acc));
+  $('meta[name=theme-color]').content = dark ? '#08090b' : '#eceef3';
+  const h = new Date().getHours();
+  document.getElementById('board').style.filter = dark && B.nightDim && (h >= 22 || h < 5) ? 'brightness(.78)' : '';   // 深夜は少し暗くします
+}
+
+/* ---------- お知らせ ---------- */
+let toastT = null;
+function toast(msg, kind = ''){
+  const t = $('#toast'); t.textContent = msg; t.className = 'show ' + kind;
+  clearTimeout(toastT); toastT = setTimeout(() => { t.className = kind; }, kind === 'err' ? 5200 : 3000);
+}
+function banner({icon = '🔔', title, body = '', onClick = null, sound = true}){
+  const b = el(`<button class="banner"><span class="i">${esc(icon)}</span><span class="tx"><b>${esc(title)}</b>${body ? `<small>${esc(body)}</small>` : ''}</span></button>`);
+  b.onclick = () => { b.remove(); if (onClick) onClick(); };
+  $('#banners').prepend(b);
+  [...$('#banners').children].slice(3).forEach(x => x.remove());
+  setTimeout(() => { b.classList.add('out'); setTimeout(() => b.remove(), 350); }, 6500);
+  if (sound && P.notifSound !== false) playSound('soft');
+}
+function confirmDialog(msg, ok = 'OK', danger = false){
+  return new Promise(res => {
+    const bg = el(`<div class="sheet-bg" style="z-index:125"><div class="sheet narrow" style="height:auto"><div class="sh-body" style="font-size:17px;line-height:1.7">${esc(msg)}
+      <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:20px"><button class="btn" data-a="0">キャンセル</button><button class="btn ${danger ? 'danger' : 'primary'}" data-a="1">${esc(ok)}</button></div></div></div></div>`);
+    bg.onclick = e => { const a = e.target.closest('[data-a]'); if (a || e.target === bg){ bg.remove(); res(!!(a && a.dataset.a === '1')); } };
+    document.body.append(bg);
+  });
+}
+
+/* ---------- 音 ---------- */
+let actx = null, audioOK = false;
+function ac(){ if (!actx){ const AC = window.AudioContext || window.webkitAudioContext; actx = new AC(); } return actx; }
+function unlockAudio(){
+  try{
+    const c = ac(); if (c.state !== 'running') c.resume();
+    const b = c.createBuffer(1, 1, 22050), s = c.createBufferSource(); s.buffer = b; s.connect(c.destination); s.start(0);
+    audioOK = true; $('#audioNotice').hidden = true;
+  }catch(e){}
+}
+document.addEventListener('pointerdown', unlockAudio, {passive:true});
+function beep(freq, start, dur, type = 'sine', vol = .3){
+  const c = ac(), o = c.createOscillator(), g = c.createGain();
+  o.type = type; o.frequency.value = freq;
+  g.gain.setValueAtTime(.0001, start); g.gain.exponentialRampToValueAtTime(vol, start + .01); g.gain.exponentialRampToValueAtTime(.0001, start + dur);
+  o.connect(g).connect(c.destination); o.start(start); o.stop(start + dur + .05);
+}
+const SOUNDS = {
+  bell:   {name:'ベル',     play:t => [0, .28, .56].forEach(d => { beep(1318, t + d, .7, 'triangle', .35); beep(2637, t + d, .3, 'sine', .08); })},
+  digital:{name:'電子音',   play:t => [0, .14, .28, .42].forEach(d => beep(2000, t + d, .09, 'square', .14))},
+  soft:   {name:'やさしい', play:t => [523, 659, 784].forEach((f, i) => beep(f, t + i * .22, .8, 'sine', .32))}
+};
+function playSound(key){ try{ const c = ac(); if (c.state !== 'running') c.resume(); (SOUNDS[key] || SOUNDS.bell).play(c.currentTime + .02); }catch(e){} }
+
+/* ---------- 鳴動画面（アラーム・タイマー） ---------- */
+let ringLoop = null, ringAuto = null, ringSnoozeFn = null;
+function startRing({icon = '⏰', title, sub = '', sound = 'bell', snooze = null}){
+  stopRing(); ytPause();
+  ringSnoozeFn = snooze;
+  $('#ringIcon').textContent = icon; $('#ringTitle').textContent = title; $('#ringSub').textContent = sub;
+  $('#ringSnooze').hidden = !snooze;
+  $('#ringTime').textContent = fmtClock(new Date()).main;
+  $('#ring').classList.add('show');
+  playSound(sound); ringLoop = setInterval(() => playSound(sound), 1700);
+  ringAuto = setTimeout(stopRing, 10 * 60 * 1000);
+}
+function stopRing(){ clearInterval(ringLoop); clearTimeout(ringAuto); ringLoop = null; $('#ring').classList.remove('show'); }
+$('#ringStop').onclick = stopRing;
+$('#ringSnooze').onclick = () => { if (ringSnoozeFn) ringSnoozeFn(); stopRing(); };
+
+/* ---------- 画面をつけたままにする ---------- */
+let wakeLock = null, wakePending = false;
+async function requestWake(){
+  if (!B.wake || !('wakeLock' in navigator) || wakeLock || wakePending || document.visibilityState !== 'visible') return;
+  wakePending = true;
+  try{ wakeLock = await navigator.wakeLock.request('screen'); wakeLock.addEventListener('release', () => { wakeLock = null; }); }catch(e){}
+  wakePending = false;
+}
+function releaseWake(){ if (wakeLock){ wakeLock.release().catch(() => {}); wakeLock = null; } }
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') requestWake(); });
+
+/* ---------- 詳細画面（シート） ---------- */
+let sheetKind = '', sheetClose = null;
+function openSheet({kind, title, icon = '', body = '', fill = false, narrow = false, onClose = null}){
+  closeSheet(true);
+  const bg = el(`<div class="sheet-bg" id="sheet"><div class="sheet ${narrow ? 'narrow' : ''}" role="dialog" aria-label="${esc(title)}">
+    <div class="sh-head"><h3>${icon ? `<span>${icon}</span>` : ''}<span class="clamp1">${esc(title)}</span></h3><button class="btn icon" id="shClose" aria-label="閉じる">✕</button></div>
+    <div class="sh-body ${fill ? 'fill' : ''}" id="shBody">${body}</div></div></div>`);
+  bg.addEventListener('click', e => { if (e.target === bg) closeSheet(); });
+  document.body.append(bg);
+  $('#shClose').onclick = () => closeSheet();
+  sheetKind = kind; sheetClose = onClose;
+  ytPlace();
+  return $('#shBody');
+}
+function closeSheet(silent){
+  const s = $('#sheet'); if (!s) return;
+  s.remove();
+  const f = sheetClose; sheetKind = ''; sheetClose = null;
+  if (f) f();
+  if (!silent) ytPlace();
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSheet(); });
+
+/* ---------- 時刻の表示 ---------- */
+function fmtClock(d, withSec = false){
+  let h = d.getHours(), ap = '';
+  if (P.hour12){ ap = h < 12 ? '午前' : '午後'; h = h % 12 || 12; }
+  return {ap, main:`${P.hour12 ? h : pad(h)}:${pad(d.getMinutes())}`, sec:withSec ? pad(d.getSeconds()) : ''};
+}
+
+/* =========================================================
+   時計・天気
+   ========================================================= */
+let holidays = store.get('holidays', null);
+async function loadHolidays(){
+  if (holidays && Date.now() - holidays.at < 7 * 864e5) return;
+  try{ const r = await fetchT('https://holidays-jp.github.io/api/v1/date.json'); if (r.ok){ holidays = {at:Date.now(), d:await r.json()}; store.set('holidays', holidays); renderClock(true); } }catch(e){}
+}
+let lastMin = -1, lastDay = '';
+function renderClock(force){
+  const now = new Date(), t = fmtClock(now, cfg.seconds());
+  $('#ckTime').innerHTML = `${t.ap ? `<span class="ap">${t.ap}</span>` : ''}${t.main}${t.sec ? `<span class="sec">${t.sec}</span>` : ''}`;
+  const dk = dateKey(now);
+  if (force || dk !== lastDay){
+    lastDay = dk;
+    const hol = holidays && holidays.d && holidays.d[dk];
+    $('#ckDate').innerHTML = `${now.getMonth() + 1}月${now.getDate()}日（${WD[now.getDay()]}）${hol ? `<small>${esc(hol)}</small>` : ''}`;
+  }
+  if (force || now.getMinutes() !== lastMin){ lastMin = now.getMinutes(); renderClockFoot(); }
+}
+function nextAlarm(){
+  const now = new Date(); let best = null;
+  for (const a of alarms){
+    if (!a.enabled) continue;
+    const [H, M] = a.time.split(':').map(Number);
+    for (let i = 0; i < 8; i++){
+      const d = new Date(now); d.setDate(d.getDate() + i); d.setHours(H, M, 0, 0);
+      if (d <= now) continue;
+      if (a.days && a.days.length && !a.days.includes(d.getDay())) continue;
+      if (!best || d < best.at) best = {at:d, a};
+      break;
+    }
+  }
+  return best;
+}
+function renderClockFoot(){
+  const n = nextAlarm();
+  let txt = '⏰ アラームはありません';
+  if (n){
+    const d = n.at, today = new Date(), tm = new Date(Date.now() + 864e5);
+    const day = dateKey(d) === dateKey(today) ? '' : dateKey(d) === dateKey(tm) ? '明日 ' : `${WD[d.getDay()]}曜 `;
+    txt = `⏰ 次のアラーム ${day}${fmtClock(d).ap}${fmtClock(d).main}`;
+  }
+  $('#ckAlarm').textContent = txt;
+  $('#ckPlace').textContent = '📍' + (P.weatherName || '');
+}
+
+/* ---------- 天気（Open-Meteo、つながらないときは wttr.in） ---------- */
+let wx = store.get('wx', null), wxLoading = null, wxErr = '', wxRetryT = null;
+function wmo(c, day = 1){
+  const M = {0:['快晴', day ? '☀️' : '🌙'], 1:['晴れ', day ? '🌤️' : '🌙'], 2:['晴れ時々くもり', '⛅'], 3:['くもり', '☁️'], 45:['霧', '🌫️'], 48:['霧', '🌫️'],
+    51:['弱い霧雨', '🌦️'], 53:['霧雨', '🌦️'], 55:['強い霧雨', '🌧️'], 56:['着氷性の霧雨', '🌧️'], 57:['着氷性の霧雨', '🌧️'],
+    61:['弱い雨', '🌦️'], 63:['雨', '🌧️'], 65:['強い雨', '🌧️'], 66:['着氷性の雨', '🌧️'], 67:['着氷性の雨', '🌧️'],
+    71:['弱い雪', '🌨️'], 73:['雪', '🌨️'], 75:['大雪', '❄️'], 77:['霧雪', '🌨️'], 80:['にわか雨', '🌦️'], 81:['にわか雨', '🌧️'], 82:['激しいにわか雨', '⛈️'],
+    85:['にわか雪', '🌨️'], 86:['激しいにわか雪', '❄️'], 95:['雷雨', '⛈️'], 96:['ひょうを伴う雷雨', '⛈️'], 99:['ひょうを伴う雷雨', '⛈️']};
+  return M[c] || ['不明', '🌡️'];
+}
+const WWO2WMO = c => { c = +c; if (c === 113) return 0; if (c === 116) return 2; if (c === 119 || c === 122) return 3; if ([143, 248, 260].includes(c)) return 45;
+  if ([176, 263, 266, 293, 296, 353].includes(c)) return 61; if ([299, 302, 356].includes(c)) return 63; if ([305, 308, 359].includes(c)) return 65;
+  if ([200, 386, 389, 392, 395].includes(c)) return 95; if ([179, 227, 323, 326, 368].includes(c)) return 71; if ([329, 332, 371].includes(c)) return 73;
+  if ([230, 335, 338].includes(c)) return 75; if ([182, 185, 281, 284, 311, 314, 317, 320, 350, 362, 365, 374, 377].includes(c)) return 66; return 3; };
+async function wttrWeather(){
+  const r = await fetchT(`https://wttr.in/${P.weatherLat},${P.weatherLon}?format=j1&lang=ja`, {cache:'no-store'});
+  if (!r.ok) throw new Error(`HTTP ${r.status}`);
+  const j = await r.json(), cc = j.current_condition && j.current_condition[0];
+  if (!cc || !j.weather) throw new Error('データの形式が正しくありません');
+  const now = new Date(), H = {time:[], temperature_2m:[], weather_code:[], precipitation_probability:[], is_day:[]};
+  j.weather.forEach(d => d.hourly.forEach(h => { const hh = Math.floor(+h.time / 100); for (let k = 0; k < 3; k++){ const hr = hh + k; H.time.push(`${d.date}T${pad(hr)}:00`); H.temperature_2m.push(+h.tempC); H.weather_code.push(WWO2WMO(h.weatherCode)); H.precipitation_probability.push(+h.chanceofrain || 0); H.is_day.push(hr >= 6 && hr < 18 ? 1 : 0); } }));
+  return {
+    current:{time:`${dateKey(now)}T${pad(now.getHours())}:${pad(now.getMinutes())}`, temperature_2m:+cc.temp_C, relative_humidity_2m:+cc.humidity, apparent_temperature:+cc.FeelsLikeC, weather_code:WWO2WMO(cc.weatherCode), wind_speed_10m:(+cc.windspeedKmph || 0) / 3.6, is_day:now.getHours() >= 6 && now.getHours() < 18 ? 1 : 0},
+    hourly:H,
+    daily:{time:j.weather.map(d => d.date), weather_code:j.weather.map(d => Math.max(...d.hourly.map(h => WWO2WMO(h.weatherCode)))), temperature_2m_max:j.weather.map(d => +d.maxtempC), temperature_2m_min:j.weather.map(d => +d.mintempC), precipitation_probability_max:j.weather.map(d => Math.max(...d.hourly.map(h => +h.chanceofrain || 0)))}
+  };
+}
+function loadWeather(force = false){
+  const key = `${P.weatherLat},${P.weatherLon}`;
+  if (!force && wx && wx.key === key && Date.now() - wx.at < 30 * 60000){ renderWeather(); return Promise.resolve(); }
+  if (wxLoading) return wxLoading;
+  const url = `https://api.open-meteo.com/v1/forecast?latitude=${P.weatherLat}&longitude=${P.weatherLon}` +
+    `&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m,is_day` +
+    `&hourly=temperature_2m,weather_code,precipitation_probability,is_day` +
+    `&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max` +
+    `&timezone=auto&forecast_days=7&wind_speed_unit=ms`;
+  wxLoading = (async () => {
+    let lastErr = '';
+    for (let i = 0; i < 3; i++){
+      try{
+        const r = await fetchT(url, {cache:'no-store'});
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        const data = await r.json();
+        if (!data || !data.current || !data.daily) throw new Error('データの形式が正しくありません');
+        wx = {key, at:Date.now(), src:'om', data}; store.set('wx', wx); wxErr = ''; clearTimeout(wxRetryT);
+        return;
+      }catch(e){
+        lastErr = e.name === 'AbortError' ? '応答がありませんでした' : e instanceof TypeError ? '通信できませんでした' : e.message;
+        if (i < 2) await sleep(1500 * (i + 1));
+      }
+    }
+    try{ wx = {key, at:Date.now(), src:'wttr', data:await wttrWeather()}; store.set('wx', wx); wxErr = ''; clearTimeout(wxRetryT); return; }
+    catch(e){ lastErr += '／予備の取得先にも接続できませんでした'; }
+    wxErr = lastErr;
+    clearTimeout(wxRetryT); wxRetryT = setTimeout(() => loadWeather(), 60000);
+  })().finally(() => { wxLoading = null; renderWeather(); });
+  return wxLoading;
+}
+function todayRest(D){
+  const today = D.daily.time[0], nowH = D.current.time.slice(0, 13), idx = [];
+  D.hourly.time.forEach((t, i) => { if (t.slice(0, 10) === today && t.slice(0, 13) >= nowH) idx.push(i); });
+  if (!idx.length) return null;
+  return {code:Math.max(...idx.map(i => D.hourly.weather_code[i])), prob:Math.max(...idx.map(i => D.hourly.precipitation_probability[i] || 0))};
+}
+function nextHours(D, n){
+  const nowH = `${dateKey(new Date())}T${pad(new Date().getHours())}`, out = [];
+  D.hourly.time.forEach((t, i) => { if (out.length < n && t.slice(0, 13) > nowH) out.push(i); });
+  return out.map(i => ({h:+D.hourly.time[i].slice(11, 13), code:D.hourly.weather_code[i], day:D.hourly.is_day[i], t:D.hourly.temperature_2m[i], p:D.hourly.precipitation_probability[i] || 0}));
+}
+function renderWeather(){
+  const box = $('#ckWx'), hrs = $('#ckHours');
+  if (!wx || !wx.data || !wx.data.current){
+    box.innerHTML = `<span class="em">⛅</span><div class="ds">${wxErr ? `天気を取得できませんでした<br><small>${esc(wxErr)}</small>` : '天気を読み込んでいます…'}</div>`;
+    hrs.innerHTML = ''; hrs.hidden = true; return;
+  }
+  const D = wx.data, c = D.current, [desc, em] = wmo(c.weather_code, c.is_day), rest = todayRest(D);
+  box.innerHTML = `<span class="em">${em}</span><span class="tp num">${Math.round(c.temperature_2m)}°</span>
+    <div class="ds"><b>${esc(desc)}</b>最高 ${Math.round(D.daily.temperature_2m_max[0])}° ／ 最低 ${Math.round(D.daily.temperature_2m_min[0])}°<br>☔ ${rest ? rest.prob : D.daily.precipitation_probability_max[0]}%　💧 ${Math.round(c.relative_humidity_2m)}%</div>`;
+  const nh = nextHours(D, 6); hrs.hidden = !nh.length;
+  hrs.innerHTML = nh.map(h => `<div><span>${h.h}時</span><span class="e">${wmo(h.code, h.day)[1]}</span><b>${Math.round(h.t)}°</b><span class="p">${h.p}%</span></div>`).join('');
+  $('#ckWxBtn').textContent = em;
+  if (sheetKind === 'weather') renderWeatherSheet();
+}
+function renderWeatherSheet(){
+  const b = $('#shBody'); if (!b) return;
+  if (!wx || !wx.data){ b.innerHTML = `<div class="empty"><div class="big">⛅</div>${esc(wxErr || '天気を読み込んでいます…')}<button class="btn primary" id="wxRe">もう一度読み込む</button></div>`; $('#wxRe').onclick = () => loadWeather(true); return; }
+  const D = wx.data, c = D.current, [desc, em] = wmo(c.weather_code, c.is_day), up = new Date(wx.at);
+  const hours = nextHours(D, 24);
+  const mn = Math.min(...D.daily.temperature_2m_min), mx = Math.max(...D.daily.temperature_2m_max);
+  b.innerHTML = `<div class="wx-now"><span class="e">${em}</span><span class="t num">${Math.round(c.temperature_2m)}°</span>
+      <div><b style="font-size:22px">${esc(desc)}</b><div class="hint" style="font-size:15px">体感 ${Math.round(c.apparent_temperature)}°　湿度 ${Math.round(c.relative_humidity_2m)}%　風 ${(+c.wind_speed_10m).toFixed(1)}m/s</div></div></div>
+    <div class="wx-hours num">${hours.map(h => `<div><span>${h.h}時</span><span class="e">${wmo(h.code, h.day)[1]}</span><b>${Math.round(h.t)}°</b><span class="hint" style="font-size:12px">☔${h.p}%</span></div>`).join('')}</div>
+    <div class="wx-days num">${D.daily.time.map((t, i) => { const d = new Date(t + 'T00:00'), lo = D.daily.temperature_2m_min[i], hi = D.daily.temperature_2m_max[i];
+      return `<div><span>${i === 0 ? '今日' : i === 1 ? '明日' : `${d.getMonth() + 1}/${d.getDate()}（${WD[d.getDay()]}）`}</span><span class="e">${wmo(D.daily.weather_code[i])[1]}</span>
+        <span style="position:relative;height:6px"><span class="bar" style="position:absolute;left:${(lo - mn) / Math.max(1, mx - mn) * 100}%;right:${(mx - hi) / Math.max(1, mx - mn) * 100}%;top:0;bottom:0"></span></span>
+        <span style="color:var(--sub)">☔${D.daily.precipitation_probability_max[i] ?? '-'}%</span><span style="text-align:right"><b>${Math.round(hi)}°</b> <span style="color:var(--sub)">/ ${Math.round(lo)}°</span></span></div>`; }).join('')}</div>
+    <p class="hint" style="margin-top:14px">📍${esc(P.weatherName)}　更新 ${pad(up.getHours())}:${pad(up.getMinutes())}　データ提供：${wx.src === 'wttr' ? 'wttr.in' : 'Open-Meteo'}</p>`;
+}
+$('#ckWxBtn').onclick = () => { openSheet({kind:'weather', title:`${P.weatherName} の天気`, icon:'🌤️'}); renderWeatherSheet(); loadWeather(); };
+$('#ckTime').onclick = $('#ckWx').onclick = $('#ckHours').onclick = $('#ckWxBtn').onclick;
+$('#ckSet').onclick = () => openSettings();
+window.addEventListener('online', () => loadWeather());
+
+/* =========================================================
+   ニュース（NHK ニュースの RSS ＋ たいきニュース）
+   ========================================================= */
+const NEWS_SRC = {
+  nhk0:{name:'NHK 主要', short:'主要', rss:'https://www3.nhk.or.jp/rss/news/cat0.xml'},
+  nhk1:{name:'NHK 社会', short:'社会', rss:'https://www3.nhk.or.jp/rss/news/cat1.xml'},
+  nhk7:{name:'NHK スポーツ', short:'スポーツ', rss:'https://www3.nhk.or.jp/rss/news/cat7.xml'},
+  tnews:{name:'たいきニュース', short:'たいき'}
+};
+/* たいきニュース（Firebase プロジェクト t-news-83af6 の公開記事を読み込みます） */
+const TNEWS = {key:'AIzaSyB8X04hSGyWZKs5Pw_NuvsGx-Fce659WAE', project:'t-news-83af6', site:'https://taiki-ikemenn.github.io/T-News/'};
+const TNEWS_CAT = {top:'トップ', game:'ゲーム', gourmet:'グルメ', weather:'天気', other:'その他'};
+let news = store.get('news', {}), newsLoading = {}, newsHi = 0, newsHiT = null;
+
+function fsVal(v){
+  if (!v) return null;
+  if ('stringValue' in v) return v.stringValue;
+  if ('integerValue' in v) return +v.integerValue;
+  if ('doubleValue' in v) return v.doubleValue;
+  if ('booleanValue' in v) return v.booleanValue;
+  if ('timestampValue' in v) return Date.parse(v.timestampValue);
+  if ('arrayValue' in v) return (v.arrayValue.values || []).map(fsVal);
+  if ('mapValue' in v) return fsObj(v.mapValue.fields);
+  return null;
+}
+const fsObj = f => Object.fromEntries(Object.entries(f || {}).map(([k, v]) => [k, fsVal(v)]));
+
+async function nhkItems(rss){
+  /* rss2json（JSON に変換するサービス）で読み込み、だめなときは allorigins 経由で XML を読み込みます */
+  try{
+    const r = await fetchT('https://api.rss2json.com/v1/api.json?rss_url=' + enc(rss), {}, 12000);
+    const j = await r.json();
+    if (j.status === 'ok' && j.items && j.items.length)
+      return j.items.map(it => ({id:it.guid || it.link, title:decodeHtml(it.title), link:it.link, at:Date.parse(String(it.pubDate || '').replace(' ', 'T') + 'Z') || 0, desc:stripTags(it.description || it.content || '')}));
+  }catch(e){}
+  const r = await fetchT('https://api.allorigins.win/raw?url=' + enc(rss), {}, 15000);
+  if (!r.ok) throw new Error(`HTTP ${r.status}`);
+  const x = new DOMParser().parseFromString(await r.text(), 'text/xml');
+  const items = [...x.querySelectorAll('item')].map(it => {
+    const g = n => (it.querySelector(n) || {}).textContent || '';
+    return {id:g('guid') || g('link'), title:g('title').trim(), link:g('link').trim(), at:Date.parse(g('pubDate')) || 0, desc:stripTags(g('description'))};
+  });
+  if (!items.length) throw new Error('記事が見つかりませんでした');
+  return items;
+}
+async function tnewsItems(){
+  const r = await fetchT(`https://firestore.googleapis.com/v1/projects/${TNEWS.project}/databases/(default)/documents:runQuery?key=${TNEWS.key}`, {
+    method:'POST', headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({structuredQuery:{from:[{collectionId:'articles'}], orderBy:[{field:{fieldPath:'createdAt'}, direction:'DESCENDING'}], limit:15,
+      select:{fields:['title', 'category', 'createdAt', 'imageUrl'].map(f => ({fieldPath:f}))}}})
+  });
+  if (!r.ok) throw new Error(`HTTP ${r.status}`);
+  const j = await r.json();
+  return (Array.isArray(j) ? j : []).filter(x => x.document).map(x => {
+    const o = fsObj(x.document.fields), id = x.document.name.split('/').pop();
+    return {id, title:o.title || '（タイトルなし）', at:o.createdAt || 0, img:o.imageUrl || '', cat:TNEWS_CAT[o.category] || '', tnews:true};
+  });
+}
+async function loadNews(src = B.news, force = false){
+  const cur = news[src];
+  if (!force && cur && cur.items && cur.items.length && Date.now() - cur.at < 15 * 60000){ renderNews(); return; }
+  if (newsLoading[src]) return;
+  newsLoading[src] = true; renderNews();
+  try{
+    const items = src === 'tnews' ? await tnewsItems() : await nhkItems(NEWS_SRC[src].rss);
+    news[src] = {at:Date.now(), items:items.slice(0, 20), err:''};
+  }catch(e){
+    news[src] = Object.assign({}, cur || {items:[]}, {err:e.name === 'AbortError' ? '応答がありませんでした' : e instanceof TypeError ? '通信できませんでした' : e.message, errAt:Date.now()});
+  }
+  newsLoading[src] = false;
+  store.set('news', news);
+  renderNews();
+}
+function renderNewsTabs(){
+  if (!NEWS_SRC[B.news]) B.news = 'nhk0';
+  $('#nwTabs').innerHTML = Object.entries(NEWS_SRC).map(([k, s]) => `<button class="chip ${B.news === k ? 'on' : ''}" data-nw="${k}">${esc(s.short)}</button>`).join('');
+}
+function renderNews(){
+  const src = B.news, cur = news[src], list = $('#nwList');
+  $('#nwSrc').textContent = src === 'tnews' ? 'たいきニュース' : 'NHK ニュース';
+  $('#nwUp').textContent = newsLoading[src] ? '読み込んでいます…' : cur && cur.at ? `${fmtAgo(cur.at)}に更新` : '';
+  if (!cur || !cur.items || !cur.items.length){
+    list.innerHTML = newsLoading[src] ? '<div class="empty"><div class="spin"></div>ニュースを読み込んでいます</div>'
+      : `<div class="empty"><div class="big">📰</div>ニュースを読み込めませんでした${cur && cur.err ? `<br><small>${esc(cur.err)}</small>` : ''}<button class="btn sm primary" data-nwre>もう一度読み込む</button></div>`;
+    return;
+  }
+  list.innerHTML = cur.items.map((n, i) => `<button class="nw-item" data-ni="${i}"><span class="t num">${n.at ? fmtHMs(n.at) : ''}</span>
+    <span class="x"><b class="clamp2">${esc(n.title)}</b>${n.cat ? `<small>${esc(n.cat)}・${esc(fmtAgo(n.at))}</small>` : ''}</span>${n.img ? `<img src="${esc(n.img)}" alt="" loading="lazy">` : ''}</button>`).join('');
+  newsHi = Math.min(newsHi, cur.items.length - 1); highlightNews(false);
+}
+/* 見出しを順番に強調して、自動で送ります */
+function highlightNews(scroll = true){
+  const items = $$('.nw-item', $('#nwList')); if (!items.length) return;
+  items.forEach((x, i) => x.classList.toggle('on', i === newsHi));
+  const it = items[newsHi], list = $('#nwList');
+  if (scroll && it){ const top = it.offsetTop - list.offsetTop; if (top < list.scrollTop || top + it.offsetHeight > list.scrollTop + list.clientHeight) list.scrollTop = Math.max(0, top - 4); }
+}
+function newsAuto(){
+  clearInterval(newsHiT);
+  newsHiT = setInterval(() => {
+    if (document.hidden || sheetKind) return;
+    const n = $$('.nw-item', $('#nwList')).length; if (!n) return;
+    newsHi = (newsHi + 1) % n; highlightNews();
+  }, 8000);
+}
+async function openArticle(n){
+  if (!n.tnews){
+    const b = openSheet({kind:'article', title:'NHK ニュース', icon:'📰', narrow:true});
+    b.innerHTML = `<article class="art"><h1>${esc(n.title)}</h1><div class="meta">${n.at ? new Date(n.at).toLocaleString('ja-JP', {month:'long', day:'numeric', hour:'2-digit', minute:'2-digit'}) : ''}　NHK</div>
+      <div class="body">${esc(n.desc || '記事の概要はありません。')}</div>
+      <div style="margin-top:20px"><a class="btn primary" href="${esc(n.link)}" target="_blank" rel="noopener" style="text-decoration:none">NHK のサイトで続きを読む</a></div></article>`;
+    return;
+  }
+  const b = openSheet({kind:'article', title:'たいきニュース', icon:'📰', narrow:true});
+  b.innerHTML = '<div class="empty" style="height:100%"><div class="spin"></div>記事を読み込んでいます</div>';
+  try{
+    const r = await fetchT(`https://firestore.googleapis.com/v1/projects/${TNEWS.project}/databases/(default)/documents/articles/${enc(n.id)}?key=${TNEWS.key}`);
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    const o = fsObj((await r.json()).fields);
+    if (sheetKind !== 'article') return;
+    b.innerHTML = `<article class="art">${o.imageUrl ? `<img src="${esc(o.imageUrl)}" alt="">` : ''}<h1>${esc(o.title)}</h1>
+      <div class="meta">${esc(TNEWS_CAT[o.category] || '')}${o.createdAt ? '　' + new Date(o.createdAt).toLocaleString('ja-JP', {month:'long', day:'numeric', hour:'2-digit', minute:'2-digit'}) : ''}${o.views != null ? `　${o.views} 回表示` : ''}</div>
+      <div class="body">${esc(o.body || '')}</div>
+      <div style="margin-top:20px"><a class="btn" href="${TNEWS.site}#/article/${enc(n.id)}" target="_blank" rel="noopener" style="text-decoration:none">たいきニュースで開く</a></div></article>`;
+  }catch(e){ b.innerHTML = `<div class="empty" style="height:100%"><div class="big">📰</div>記事を読み込めませんでした（${esc(e.message)}）</div>`; }
+}
+$('#nwTabs').onclick = e => { const t = e.target.closest('[data-nw]'); if (!t) return; B.news = t.dataset.nw; savePrefs(); newsHi = 0; $('#nwList').scrollTop = 0; renderNewsTabs(); renderNews(); loadNews(); };
+$('#nwList').onclick = e => {
+  if (e.target.closest('[data-nwre]')) return loadNews(B.news, true);
+  const t = e.target.closest('[data-ni]'); if (!t) return;
+  const n = news[B.news].items[+t.dataset.ni]; newsHi = +t.dataset.ni; highlightNews(false); openArticle(n);
+};
+
+/* =========================================================
+   LINE（nicehome+ と同じペアリングコードで、Android タブレット経由の LINE を受け取ります）
+   ========================================================= */
+let lineMsgs = [], lineUnsub = null, lineSub = '', lineState = {st:'off'}, lineChat = null;
+let lineSeen = new Set(store.get('lineSeen', []));
+let lineRead = store.get('lineRead', {});
+const lineReady = () => !!(USER && window.FBX && P.lineCode);
+function openLine(){
+  const t = Date.now(); location.href = 'line://nv/chat';
+  setTimeout(() => { if (!document.hidden && Date.now() - t < 2500) toast('LINE アプリを開けませんでした。この端末に LINE がインストールされているかご確認ください', 'err'); }, 1800);
+}
+function lineListen(force){
+  const want = lineReady() ? USER.uid + ':' + P.lineCode : '';
+  if (!force && want === lineSub) return;
+  if (lineUnsub){ try{ lineUnsub(); }catch(e){} lineUnsub = null; }
+  lineSub = want; lineMsgs = [];
+  if (!want){ lineState = {st:'off'}; renderLineTile(); return; }
+  lineState = {st:'wait'};
+  const code = P.lineCode;
+  try{
+    lineUnsub = FBX.onSnapshot(FBX.query(FBX.collection(FBX.db, 'lineRelay', code, 'msgs'), FBX.orderBy('at', 'desc'), FBX.limit(300)), snap => {
+      const arr = [];
+      snap.forEach(d => { const v = d.data() || {}; arr.push({id:d.id, chat:String(v.chat || 'LINE'), sender:String(v.sender || ''), text:String(v.text || ''), at:+v.at || 0, dev:String(v.dev || '')}); });
+      arr.sort((a, b) => b.at - a.at);
+      lineOnMsgs(arr, code);
+    }, e => { console.warn('line', e); lineState = {st:'err', err:(e && e.code) || String(e)}; renderLineTile(); });
+  }catch(e){ lineState = {st:'err', err:String(e)}; }
+  renderLineTile();
+}
+function lineOnMsgs(arr, code){
+  if (code !== P.lineCode) return;
+  const first = !lineSeen.size && !store.get('lineInit', false);
+  lineMsgs = arr; lineState = {st:'ok'};
+  if (first){
+    arr.forEach(m => lineSeen.add(m.id));
+    if (lineRead._base == null){ lineRead._base = arr.length ? arr[0].at : 0; store.set('lineRead', lineRead); }
+    store.set('lineInit', true);
+  } else {
+    const fresh = arr.filter(m => !lineSeen.has(m.id)).reverse();
+    fresh.forEach(m => lineSeen.add(m.id));
+    const show = fresh.filter(m => Math.abs(Date.now() - m.at) < 30 * 60000);
+    if (P.lineNotif !== false && show.length){
+      if (sheetKind === 'line'){ if (P.notifSound !== false) playSound('soft'); }
+      else {
+        if (show.length > 2) banner({icon:'💬', title:'LINE', body:`ほかに ${show.length - 2} 件のメッセージがあります`, onClick:() => openLineSheet(), sound:false});
+        show.slice(-2).forEach(m => banner({icon:'💬', title:`LINE：${m.chat}`, body:m.sender && m.sender !== m.chat ? `${m.sender}：${m.text}` : m.text, onClick:() => openLineSheet(m.chat)}));
+      }
+    }
+  }
+  store.set('lineSeen', [...lineSeen].slice(-600));
+  renderLineTile();
+  if (sheetKind === 'line') renderLineSheet();
+}
+function lineChats(){
+  const map = new Map();
+  lineMsgs.forEach(m => { if (!map.has(m.chat)) map.set(m.chat, {name:m.chat, last:m, msgs:[]}); map.get(m.chat).msgs.push(m); });
+  return [...map.values()].sort((a, b) => b.last.at - a.last.at);
+}
+const lineReadAt = chat => lineRead[chat] != null ? lineRead[chat] : (lineRead._base || 0);
+const lineUnread = c => c.msgs.filter(m => m.at > lineReadAt(c.name)).length;
+function lineMarkRead(chat){ const c = lineChats().find(x => x.name === chat); if (c && lineUnread(c)){ lineRead[chat] = c.last.at; store.set('lineRead', lineRead); } }
+function lineColor(s){ let h = 0; for (const ch of s) h = (h * 31 + ch.codePointAt(0)) % 360; return `hsl(${h} 55% 50%)`; }
+const lineAv = (name, cls = '') => `<span class="av ${cls}" style="background:${lineColor(name)}">${esc([...String(name).trim()][0] || '?')}</span>`;
+function lineErrText(code){
+  if (code === 'permission-denied') return 'LINE のメッセージを読む許可がありません。Firestore のルールをご確認ください';
+  if (code === 'unavailable') return 'インターネットに接続できません';
+  return `受信できませんでした（${code}）`;
+}
+function renderLineTile(){
+  const body = $('#lnBody'), st = $('#lnState'), badge = $('#lnBadge');
+  st.className = 'ln-state ' + lineState.st;
+  if (!USER || !P.lineCode){
+    badge.hidden = true;
+    body.innerHTML = `<div class="empty"><div class="big">💬</div>${!USER ? 'たいアカウントにログインすると、LINE のメッセージを表示できます'
+      : 'nicehome+ の設定「LINE の通知（Android 経由）」でペアリングコードを作ると、ここに LINE が表示されます'}
+      <button class="btn sm line" data-ln="open">LINE を開く</button></div>`;
+    return;
+  }
+  const chats = lineChats(), total = chats.reduce((n, c) => n + lineUnread(c), 0);
+  badge.hidden = !total; badge.textContent = total > 99 ? '99+' : total;
+  if (!chats.length){
+    body.innerHTML = `<div class="empty"><div class="big">💬</div>${lineState.st === 'err' ? esc(lineErrText(lineState.err)) : lineState.st === 'wait' ? '接続しています…' : 'まだ LINE のメッセージは届いていません'}</div>`;
+    return;
+  }
+  body.innerHTML = `<div class="ln-list">${chats.slice(0, 12).map(c => { const u = lineUnread(c); return `<button class="ln-row" data-lnchat="${esc(c.name)}">${lineAv(c.name)}
+    <span class="x"><b class="clamp1">${esc(c.name)}</b><small class="clamp1">${esc(c.last.sender && c.last.sender !== c.name ? c.last.sender + '：' : '')}${esc(c.last.text)}</small></span>
+    <span class="m"><span>${esc(fmtAgo(c.last.at))}</span>${u ? `<span class="badge">${u > 99 ? '99+' : u}</span>` : ''}</span></button>`; }).join('')}</div>`;
+}
+function lineDay(t){
+  const d = new Date(t), today = new Date(), y = new Date(Date.now() - 864e5);
+  if (dateKey(d) === dateKey(today)) return '今日'; if (dateKey(d) === dateKey(y)) return '昨日';
+  return `${d.getMonth() + 1}月${d.getDate()}日（${WD[d.getDay()]}）`;
+}
+function openLineSheet(chat){
+  lineChat = chat || null;
+  openSheet({kind:'line', title:'LINE', icon:'💬', fill:true});
+  renderLineSheet();
+}
+function renderLineSheet(){
+  const b = $('#shBody'); if (!b) return;
+  const chats = lineChats();
+  if (!lineChat && chats.length && innerWidth > innerHeight) lineChat = chats[0].name;
+  const sel = chats.find(c => c.name === lineChat);
+  let conv = `<div class="empty"><div class="big">💬</div>トークを選んでください</div>`;
+  if (sel){
+    let lastDay = '';
+    conv = `<div class="ch"><button class="btn sm" data-ln="back" style="display:${innerWidth > innerHeight ? 'none' : 'inline-flex'}">‹ 一覧</button>${lineAv(sel.name, 'sm')}<b class="clamp1">${esc(sel.name)}</b><button class="btn sm line" data-ln="open">LINE で返信</button></div>
+      <div class="msgs" id="lnMsgs">${sel.msgs.slice().reverse().map(m => { const d = lineDay(m.at), sep = d !== lastDay ? `<div class="lnday"><span>${esc(d)}</span></div>` : ''; lastDay = d;
+        return `${sep}<div class="lnmsg">${lineAv(m.sender || sel.name, 'sm')}<div class="lnb">${m.sender && m.sender !== sel.name ? `<small class="lnsn">${esc(m.sender)}</small>` : ''}<div class="lnbub">${esc(m.text).replace(/\n/g, '<br>')}</div></div><small class="lnt">${fmtHMs(m.at)}</small></div>`; }).join('')}</div>
+      <div class="lnfoot hint">返信は LINE アプリから行ってください。スタンプや写真は「スタンプを送信しました」などの文字で表示されます。</div>`;
+    lineMarkRead(sel.name);
+  }
+  b.innerHTML = `<div class="lnv ${sel ? 'sel' : ''}"><div class="list">${chats.length ? chats.map(c => { const u = lineUnread(c); return `<button class="ln-row ${c.name === lineChat ? 'on' : ''}" data-lnchat="${esc(c.name)}">${lineAv(c.name)}
+    <span class="x"><b class="clamp1">${esc(c.name)}</b><small class="clamp1">${esc(c.last.text)}</small></span><span class="m"><span>${esc(fmtAgo(c.last.at))}</span>${u ? `<span class="badge">${u}</span>` : ''}</span></button>`; }).join('')
+    : '<div class="empty">まだメッセージはありません</div>'}</div><div class="conv">${conv}</div></div>`;
+  const ms = $('#lnMsgs'); if (ms) ms.scrollTop = ms.scrollHeight;
+  renderLineTile();
+}
+document.addEventListener('click', e => {
+  const t = e.target.closest('[data-ln],[data-lnchat]'); if (!t) return;
+  if (!t.closest('#lnBody') && !t.closest('#shBody')) return;
+  if (t.dataset.ln === 'open') return openLine();
+  if (t.dataset.ln === 'back'){ lineChat = null; renderLineSheet(); return; }
+  if (t.dataset.lnchat != null){ if (sheetKind === 'line'){ lineChat = t.dataset.lnchat; renderLineSheet(); } else openLineSheet(t.dataset.lnchat); }
+});
+
+/* =========================================================
+   タイマー・アラーム・ストップウォッチ
+   アラームは nicehome+ と共通です（どちらで追加しても、両方に表示されます）
+   ========================================================= */
+let timer = store.get('timer', {dur:5 * 60000, endAt:null, remain:null});
+let sw = store.get('sw', {start:null, acc:0, laps:[]});
+let fired = store.get('fired', {}), snooze = store.get('snooze', null);
+const saveTimer = () => store.set('timer', timer);
+const saveSw = () => store.set('sw', sw);
+function fmtDur(ms, tenths = false){
+  ms = Math.max(0, ms);
+  const s = tenths ? Math.floor(ms / 1000) : Math.ceil(ms / 1000), h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), ss = s % 60;
+  const base = h ? `${h}:${pad(m)}:${pad(ss)}` : `${pad(m)}:${pad(ss)}`;
+  return tenths ? `${base}.${pad(Math.floor(ms % 1000 / 10))}` : base;
+}
+const timerLeft = () => timer.endAt ? timer.endAt - Date.now() : timer.remain != null ? timer.remain : timer.dur;
+const swTime = () => sw.acc + (sw.start ? Date.now() - sw.start : 0);
+
+function renderTmTabs(){ $$('#tmTabs button').forEach(b => b.classList.toggle('on', b.dataset.tm === B.tm)); }
+function renderTimerTile(){
+  const v = $('#tmBody'); renderTmTabs();
+  if (B.tm === 'timer'){
+    const left = timerLeft(), run = !!timer.endAt, paused = !run && timer.remain != null;
+    v.innerHTML = `<div class="tm-big num" id="tmBig">${fmtDur(left)}</div>
+      <div class="tm-sub" id="tmSub">${run ? `${fmtClock(new Date(timer.endAt)).ap}${fmtClock(new Date(timer.endAt)).main} に終わります` : paused ? '一時停止しています' : '時間を選んで開始してください'}</div>
+      <div class="tm-bar"><i id="tmBar" style="width:${run || paused ? Math.max(0, Math.min(100, left / timer.dur * 100)) : 100}%"></i></div>
+      <div class="tm-pre">${[[1, '1分'], [3, '3分'], [5, '5分'], [10, '10分'], [15, '15分']].map(([m, n]) => `<button class="chip" data-tp="${m}">${n}</button>`).join('')}<button class="chip" data-tp="+1">＋1分</button></div>
+      <div class="tm-btns"><button class="btn ${run ? '' : 'primary'}" data-ta="go">${run ? '⏸ 一時停止' : paused ? '▶ 再開' : '▶ 開始'}</button><button class="btn" data-ta="reset" ${run || paused ? '' : 'disabled'}>リセット</button></div>`;
+  } else if (B.tm === 'alarm'){
+    const list = [...alarms].sort((a, b) => a.time.localeCompare(b.time));
+    v.innerHTML = `<div class="al-list">${list.length ? list.map(a => `<div class="al-row ${a.enabled ? '' : 'off'}"><button class="x" data-ae="${a.id}"><b class="num">${fmtClock(new Date(`2000-01-01T${a.time}`)).ap}${fmtClock(new Date(`2000-01-01T${a.time}`)).main}</b><small>${esc(a.label || 'アラーム')}・${esc(daysText(a.days))}</small></button>
+        <label class="switch"><input type="checkbox" data-at="${a.id}" ${a.enabled ? 'checked' : ''}><span></span></label></div>`).join('')
+      : '<div class="empty"><div class="big">⏰</div>アラームはありません</div>'}</div>
+      <div class="tm-btns"><button class="btn primary" data-ta="add">＋ アラームを追加</button></div>`;
+  } else {
+    const run = !!sw.start, t = swTime();
+    v.innerHTML = `<div class="tm-big num" id="swBig" style="font-size:min(19cqw,20cqh)">${fmtDur(t, true)}</div>
+      <div class="sw-laps num">${sw.laps.length ? sw.laps.map((l, i) => `<div><span>ラップ ${sw.laps.length - i}</span><span>${fmtDur(l, true)}</span></div>`).join('') : ''}</div>
+      <div class="tm-btns"><button class="btn ${run ? 'danger' : 'primary'}" data-ta="sw">${run ? '⏸ 停止' : t ? '▶ 再開' : '▶ スタート'}</button><button class="btn" data-ta="lap" ${!run && !t ? 'disabled' : ''}>${run ? 'ラップ' : 'リセット'}</button></div>`;
+  }
+}
+function daysText(days){
+  if (!days || !days.length) return '1回だけ';
+  if (days.length === 7) return '毎日';
+  const s = [...days].sort().join('');
+  if (s === '12345') return '平日'; if (s === '06') return '土日';
+  return [...days].sort().map(d => WD[d]).join('・');
+}
+function tickTimers(){
+  if (timer.endAt){
+    const left = timer.endAt - Date.now();
+    if (left <= 0){
+      timer.endAt = null; timer.remain = null; saveTimer();
+      startRing({icon:'⏳', title:'タイマーが終わりました', sub:`${fmtDur(timer.dur)} のタイマー`, sound:'digital'});
+      renderTimerTile();
+    } else if (B.tm === 'timer'){
+      const big = $('#tmBig'), bar = $('#tmBar');
+      if (big) big.textContent = fmtDur(left);
+      if (bar) bar.style.width = Math.max(0, left / timer.dur * 100) + '%';
+    }
+  }
+  if (sw.start && B.tm === 'sw'){ const b = $('#swBig'); if (b) b.textContent = fmtDur(swTime(), true); }
+}
+function checkAlarms(now){
+  const hm = `${pad(now.getHours())}:${pad(now.getMinutes())}`, key = dateKey(now) + ' ' + hm;
+  for (const a of alarms){
+    if (!a.enabled || a.time !== hm) continue;
+    if (a.days && a.days.length && !a.days.includes(now.getDay())) continue;
+    if (fired[a.id] === key) continue;
+    fired[a.id] = key; store.set('fired', fired);
+    if (!a.days || !a.days.length){ a.enabled = false; saveAlarms(); }
+    fireAlarm(a.label || 'アラーム', a.sound);
+  }
+  if (snooze && now.getTime() >= snooze.at){ const s = snooze; snooze = null; store.set('snooze', null); fireAlarm(s.label, s.sound); }
+}
+function fireAlarm(label, sound){
+  startRing({icon:'⏰', title:label, sub:'アラームの時刻になりました', sound, snooze:() => {
+    snooze = {at:Date.now() + 5 * 60000, label, sound}; store.set('snooze', snooze); toast('5分後にもう一度お知らせします');
+  }});
+}
+function editAlarm(id){
+  const a = alarms.find(x => x.id === id) || {id:uid(), time:'07:00', label:'', days:[], enabled:true, sound:'bell', isNew:true};
+  const days = new Set(a.days || []);
+  const b = openSheet({kind:'alarm', title:a.isNew ? 'アラームを追加' : 'アラームを編集', icon:'⏰', narrow:true});
+  b.innerHTML = `<input class="al-time num" type="time" id="alT" value="${esc(a.time)}">
+    <div class="sgroup" style="margin-top:14px"><h4>くり返し</h4><div class="days" id="alD" style="padding:6px 0 12px">${[...WD].map((w, i) => `<button data-d="${i}" class="${days.has(i) ? 'on' : ''}">${w}</button>`).join('')}</div></div>
+    <div class="sgroup"><h4>名前</h4><div style="padding:4px 0 12px"><input class="input" id="alL" value="${esc(a.label || '')}" placeholder="アラーム" maxlength="30"></div></div>
+    <div class="sgroup"><h4>音</h4><div class="chips" id="alS" style="padding:4px 0 12px">${Object.entries(SOUNDS).map(([k, s]) => `<button class="chip ${a.sound === k ? 'on' : ''}" data-s="${k}">${s.name}</button>`).join('')}</div></div>
+    <p class="hint">アラームは nicehome+ と共通です。この画面を開いたままにしておくと、時刻になったときに音と画面でお知らせします。</p>
+    <div style="display:flex;gap:10px;margin-top:16px">${a.isNew ? '' : '<button class="btn danger" id="alDel">削除</button>'}<span style="flex:1"></span><button class="btn" id="alCancel">キャンセル</button><button class="btn primary" id="alSave">保存</button></div>`;
+  let sound = a.sound || 'bell';
+  $('#alD').onclick = e => { const t = e.target.closest('[data-d]'); if (!t) return; const d = +t.dataset.d; days.has(d) ? days.delete(d) : days.add(d); t.classList.toggle('on'); };
+  $('#alS').onclick = e => { const t = e.target.closest('[data-s]'); if (!t) return; sound = t.dataset.s; $$('#alS .chip').forEach(x => x.classList.toggle('on', x === t)); playSound(sound); };
+  $('#alCancel').onclick = () => closeSheet();
+  if ($('#alDel')) $('#alDel').onclick = async () => { if (!(await confirmDialog('このアラームを削除してもよろしいですか？', '削除', true))) return; alarms = alarms.filter(x => x.id !== a.id); saveAlarms(); closeSheet(); toast('アラームを削除しました'); };
+  $('#alSave').onclick = () => {
+    const t = $('#alT').value; if (!/^\d{2}:\d{2}$/.test(t)) return toast('時刻を入力してください', 'err');
+    const o = {id:a.id, time:t, label:$('#alL').value.trim(), days:[...days].sort(), enabled:true, sound};
+    const i = alarms.findIndex(x => x.id === a.id);
+    if (i >= 0) alarms[i] = Object.assign({}, alarms[i], o); else alarms.push(o);
+    saveAlarms(); closeSheet(); toast(`${fmtClock(new Date(`2000-01-01T${t}`)).ap}${fmtClock(new Date(`2000-01-01T${t}`)).main} のアラームを保存しました`);
+  };
+}
+$('#tmTabs').onclick = e => { const t = e.target.closest('[data-tm]'); if (!t) return; B.tm = t.dataset.tm; savePrefs(); renderTimerTile(); };
+$('#tmBody').addEventListener('click', e => {
+  const p = e.target.closest('[data-tp]');
+  if (p){
+    if (p.dataset.tp === '+1'){
+      if (timer.endAt){ timer.endAt += 60000; timer.dur += 60000; }
+      else if (timer.remain != null){ timer.remain += 60000; timer.dur += 60000; }
+      else timer.dur += 60000;
+    } else { timer.dur = +p.dataset.tp * 60000; timer.remain = null; timer.endAt = Date.now() + timer.dur; }
+    saveTimer(); renderTimerTile(); return;
+  }
+  const a = e.target.closest('[data-ta]'), ae = e.target.closest('[data-ae]');
+  if (ae) return editAlarm(ae.dataset.ae);
+  if (!a) return;
+  const k = a.dataset.ta;
+  if (k === 'go'){
+    if (timer.endAt){ timer.remain = timer.endAt - Date.now(); timer.endAt = null; }
+    else { timer.endAt = Date.now() + (timer.remain != null ? timer.remain : timer.dur); timer.remain = null; }
+    saveTimer(); renderTimerTile();
+  }
+  if (k === 'reset'){ timer.endAt = null; timer.remain = null; saveTimer(); renderTimerTile(); }
+  if (k === 'add') editAlarm(null);
+  if (k === 'sw'){ if (sw.start){ sw.acc += Date.now() - sw.start; sw.start = null; } else sw.start = Date.now(); saveSw(); renderTimerTile(); }
+  if (k === 'lap'){ if (sw.start) sw.laps.unshift(swTime()); else sw = {start:null, acc:0, laps:[]}; saveSw(); renderTimerTile(); }
+});
+$('#tmBody').addEventListener('change', e => {
+  const t = e.target.closest('[data-at]'); if (!t) return;
+  const a = alarms.find(x => x.id === t.dataset.at); if (!a) return;
+  a.enabled = t.checked; saveAlarms();
+});
+
+/* =========================================================
+   音楽（YouTube）
+   YouTube の規約により、映像は画面に表示したまま再生します（詳細画面を開いている間は右下に表示します）。
+   ========================================================= */
+const YTP = {api:null, player:null, ready:false, queue:[], idx:-1, state:-1};
+let songs = store.get('songs', null), songsLoading = false, songsErr = '', ytResults = null, ytQuery = '';
+function ytErr(st, j){
+  const reason = j && j.error && j.error.errors && j.error.errors[0] && j.error.errors[0].reason || '';
+  if (reason === 'quotaExceeded') return 'YouTube API の1日の利用上限に達しました。明日になると、また使えるようになります';
+  if (reason === 'keyInvalid' || (st === 400 && /key/i.test(j && j.error && j.error.message || ''))) return 'YouTube の API キーが正しくありません。設定をご確認ください';
+  if (st === 403) return `YouTube API を使用できません（${reason || 403}）。API の有効化とキーの制限をご確認ください`;
+  return `YouTube でエラーが発生しました（${st}）`;
+}
+async function ytApi(path, params){
+  if (!P.youtubeKey) throw new Error('YouTube の API キーが登録されていません');
+  let r;
+  try{ r = await fetchT(`https://www.googleapis.com/youtube/v3/${path}?${new URLSearchParams(Object.assign({}, params, {key:P.youtubeKey}))}`); }
+  catch(e){ throw new Error('YouTube に接続できませんでした。ネットワーク接続をご確認ください'); }
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(ytErr(r.status, j));
+  return j;
+}
+const ytThumb = t => { t = t || {}; return (t.maxres || t.standard || t.high || t.medium || t.default || {}).url || ''; };
+const ytItem = v => { const id = typeof v.id === 'string' ? v.id : v.id.videoId; return {yt:id, title:decodeHtml(v.snippet.title), artist:decodeHtml(v.snippet.channelTitle || '').replace(/ - Topic$/, ''), art:ytThumb(v.snippet.thumbnails), live:v.snippet.liveBroadcastContent === 'live', upcoming:v.snippet.liveBroadcastContent === 'upcoming'}; };
+async function ytPopular(){ const j = await ytApi('videos', {part:'snippet', chart:'mostPopular', regionCode:'JP', videoCategoryId:'10', maxResults:'50'}); return (j.items || []).map(ytItem).filter(x => !x.upcoming); }
+async function ytSearch(q){ const j = await ytApi('search', {part:'snippet', q, type:'video', videoCategoryId:'10', videoEmbeddable:'true', regionCode:'JP', relevanceLanguage:'ja', maxResults:'25'}); return (j.items || []).filter(v => v.id && v.id.videoId).map(ytItem).filter(x => !x.upcoming); }
+async function loadSongs(force){
+  if (!P.youtubeKey){ renderMusic(); return; }
+  if (!force && songs && songs.items && songs.items.length && Date.now() - songs.at < 8 * 3600e3 && songs.key === P.youtubeKey.slice(-6)) return;
+  if (songsLoading) return; songsLoading = true; renderMusic();
+  try{ const items = await ytPopular(); songs = {at:Date.now(), items, key:P.youtubeKey.slice(-6)}; store.set('songs', songs); songsErr = ''; }
+  catch(e){ songsErr = e.message; }
+  songsLoading = false; renderMusic();
+  if (sheetKind === 'music') renderMusicSheet();
+}
+function ytLoadApi(){
+  if (YTP.api) return YTP.api;
+  YTP.api = new Promise((res, rej) => {
+    if (window.YT && window.YT.Player) return res();
+    const prev = window.onYouTubeIframeAPIReady;
+    window.onYouTubeIframeAPIReady = () => { if (prev) prev(); res(); };
+    const s = document.createElement('script'); s.src = 'https://www.youtube.com/iframe_api';
+    s.onerror = () => { YTP.api = null; rej(new Error('YouTube のプレーヤーを読み込めませんでした')); };
+    document.head.append(s);
+  });
+  return YTP.api;
+}
+const ytCur = () => YTP.queue[YTP.idx] || null;
+const ytPlaying = () => YTP.state === 1 || YTP.state === 3;
+async function ytPlayQueue(list, i){
+  YTP.queue = list.filter(x => x.yt); YTP.idx = Math.max(0, YTP.queue.findIndex(x => x.yt === (list[i] && list[i].yt)));
+  return ytPlayCurrent();
+}
+async function ytPlayCurrent(){
+  const it = ytCur(); if (!it) return;
+  renderMusic(); $('#ytDock').hidden = false; ytPlace();
+  try{ await ytLoadApi(); }catch(e){ toast(e.message, 'err'); return; }
+  if (!YTP.player){
+    YTP.player = new YT.Player('ytPlayer', {width:'100%', height:'100%', videoId:it.yt,
+      playerVars:{playsinline:1, rel:0, autoplay:1, modestbranding:1},
+      events:{
+        onReady:e => { YTP.ready = true; const c = ytCur(); if (c && c.yt !== it.yt) e.target.loadVideoById(c.yt); else e.target.playVideo(); try{ e.target.setVolume(Math.round((P.ytVol == null ? 1 : P.ytVol) * 100)); }catch(err){} },
+        onStateChange:e => { YTP.state = e.data; if (e.data === 0) ytNext(); renderMusicInfo(); },
+        onError:e => { const c = ytCur(); toast(e.data === 101 || e.data === 150 ? `「${c ? c.title : ''}」は埋め込み再生が許可されていないため、次の曲を再生します` : 'この動画を再生できませんでした。次の曲を再生します', 'err'); ytNext(); }
+      }});
+  } else if (YTP.ready) YTP.player.loadVideoById(it.yt);
+  renderMusicInfo();
+  if (sheetKind === 'music') renderMusicSheet();
+}
+function ytNext(){ if (!YTP.queue.length) return; YTP.idx = (YTP.idx + 1) % YTP.queue.length; ytPlayCurrent(); }
+function ytPrev(){ if (!YTP.queue.length) return; if (YTP.ready && YTP.player.getCurrentTime() > 3){ YTP.player.seekTo(0, true); return; } YTP.idx = (YTP.idx - 1 + YTP.queue.length) % YTP.queue.length; ytPlayCurrent(); }
+function ytPause(){ try{ if (YTP.ready && ytPlaying()) YTP.player.pauseVideo(); }catch(e){} }
+function ytToggle(){
+  if (YTP.idx < 0){ const l = songs && songs.items || []; if (l.length) ytPlayQueue(l, 0); return; }
+  if (!YTP.ready) return;
+  ytPlaying() ? YTP.player.pauseVideo() : YTP.player.playVideo();
+}
+/* 再生画面を、音楽タイルの枠（詳細画面を開いている間は右下）に重ねます */
+function ytPlace(){
+  const dock = $('#ytDock'); if (!dock) return;
+  dock.hidden = YTP.idx < 0;
+  const float = !!sheetKind && !dock.hidden;
+  document.body.classList.toggle('ytfloat', float);
+  if (dock.hidden) return;
+  dock.classList.toggle('float', float);
+  if (float){
+    const w = Math.min(356, innerWidth * .45), h = Math.max(200, w * 9 / 16);
+    Object.assign(dock.style, {left:`${innerWidth - w - 22}px`, top:`${innerHeight - h - 22}px`, width:`${w}px`, height:`${h}px`});
+  } else {
+    const slot = $('#muSlot'); if (!slot) return;
+    const r = slot.getBoundingClientRect();
+    Object.assign(dock.style, {left:`${r.left}px`, top:`${r.top}px`, width:`${r.width}px`, height:`${r.height}px`});
+  }
+}
+window.addEventListener('resize', () => { ytPlace(); });
+window.addEventListener('scroll', () => ytPlace(), true);
+function renderMusic(){
+  const b = $('#muBody');
+  if (!P.youtubeKey){
+    b.innerHTML = `<div class="empty"><div class="big">🎵</div>YouTube の API キーを登録すると、人気の音楽を再生できます<button class="btn sm primary" data-mu="set">設定を開く</button></div>`;
+    $('#muFind').hidden = true; return;
+  }
+  $('#muFind').hidden = false;
+  const first = songs && songs.items && songs.items[0];
+  const poster = YTP.idx < 0 ? (first ? `<button class="mu-poster" data-mu="play" style="background-image:url('${esc(first.art)}')"><span class="pl">▶</span><span class="cap clamp1">人気の音楽を再生します</span></button>`
+    : `<div class="mu-poster" style="display:grid;place-items:center;color:#fff;font-size:14px">${songsLoading ? '<div class="spin"></div>' : esc(songsErr || '曲がありません')}</div>`) : '';
+  b.innerHTML = `<div class="mu-slot" id="muSlot">${poster}</div>
+    <div class="mu-info"><div class="x" id="muNow"></div>
+      <div class="mu-ctl"><button class="btn" data-mu="prev" aria-label="前の曲">⏮</button><button class="btn primary" data-mu="toggle" id="muPlay" aria-label="再生">▶</button><button class="btn" data-mu="next" aria-label="次の曲">⏭</button></div></div>`;
+  renderMusicInfo(); requestAnimationFrame(ytPlace);
+}
+function renderMusicInfo(){
+  const n = $('#muNow'); if (!n) return;
+  const c = ytCur(), first = songs && songs.items && songs.items[0];
+  n.innerHTML = c ? `<b class="clamp1">${c.live ? '<span class="livebadge">LIVE</span>' : ''}${esc(c.title)}</b><small class="clamp1">${esc(c.artist)}</small>`
+    : `<b class="clamp1">${first ? '人気の音楽（YouTube）' : '音楽'}</b><small class="clamp1">${first ? `${songs.items.length} 曲・${esc(first.title)} など` : ''}</small>`;
+  const p = $('#muPlay'); if (p){ p.textContent = ytPlaying() ? '⏸' : '▶'; p.setAttribute('aria-label', ytPlaying() ? '一時停止' : '再生'); }
+  if (sheetKind === 'music') $$('.mu-card').forEach(x => x.classList.toggle('on', c && x.dataset.yt === c.yt));
+}
+function openMusicSheet(){
+  openSheet({kind:'music', title:'曲をさがす', icon:'🎵'});
+  renderMusicSheet();
+}
+function renderMusicSheet(){
+  const b = $('#shBody'); if (!b) return;
+  const list = ytResults || (songs && songs.items) || [], c = ytCur();
+  const keep = $('#muQ') && document.activeElement === $('#muQ');
+  b.innerHTML = `<div class="mu-search"><input class="input" id="muQ" placeholder="曲名・アーティスト名で検索（例：YOASOBI）" value="${esc(ytQuery)}" enterkeyhint="search"><button class="btn primary" id="muGo">検索</button>${ytResults ? '<button class="btn" id="muPop">人気の音楽</button>' : ''}</div>
+    <p class="hint" style="margin-bottom:10px">${ytResults ? `「${esc(ytQuery)}」の検索結果` : '人気の音楽（YouTube・日本）'}　検索は1日に約100回までの上限があります。</p>
+    <div class="mu-grid">${list.map((s, i) => `<button class="mu-card ${c && c.yt === s.yt ? 'on' : ''}" data-yt="${esc(s.yt)}" data-i="${i}"><div class="th" style="background-image:url('${esc(s.art)}')">${s.live ? '<span class="livebadge">LIVE</span>' : ''}</div>
+      <div class="x"><b class="clamp2">${esc(s.title)}</b><small class="clamp1">${esc(s.artist)}</small></div></button>`).join('') || `<div class="empty">${songsLoading ? '<div class="spin"></div>' : esc(songsErr || '曲が見つかりませんでした')}</div>`}</div>`;
+  const go = async () => {
+    const q = $('#muQ').value.trim(); if (!q) return;
+    ytQuery = q; $('#muGo').disabled = true;
+    try{ ytResults = await ytSearch(q); }catch(e){ toast(e.message, 'err'); }
+    renderMusicSheet();
+  };
+  $('#muGo').onclick = go;
+  $('#muQ').onkeydown = e => { if (e.key === 'Enter') go(); };
+  if ($('#muPop')) $('#muPop').onclick = () => { ytResults = null; ytQuery = ''; renderMusicSheet(); };
+  b.querySelector('.mu-grid').onclick = e => { const t = e.target.closest('[data-i]'); if (!t) return; ytPlayQueue(list, +t.dataset.i); };
+  if (keep) $('#muQ').focus();
+}
+$('#muFind').onclick = openMusicSheet;
+$('#muBody').addEventListener('click', e => {
+  const t = e.target.closest('[data-mu]'); if (!t) return;
+  const a = t.dataset.mu;
+  if (a === 'set') return openSettings('keys');
+  if (a === 'play' || a === 'toggle') ytToggle();
+  if (a === 'next') ytNext();
+  if (a === 'prev') ytPrev();
+});
+
+/* =========================================================
+   レシピ（世界のレシピ：TheMealDB ／ AI レシピ：Gemini）
+   ========================================================= */
+const MEAL_CAT = {Beef:'牛肉料理', Chicken:'鶏肉料理', Dessert:'デザート', Lamb:'ラム肉料理', Miscellaneous:'いろいろ', Pasta:'パスタ', Pork:'豚肉料理', Seafood:'魚介料理', Side:'副菜', Starter:'前菜', Vegan:'ヴィーガン', Vegetarian:'ベジタリアン', Breakfast:'朝ごはん', Goat:'ヤギ肉料理'};
+const MEAL_AREA = {Japanese:'和食', Chinese:'中華', Italian:'イタリアン', French:'フレンチ', Indian:'インド料理', Thai:'タイ料理', Mexican:'メキシコ料理', American:'アメリカ料理', British:'イギリス料理', Spanish:'スペイン料理', Greek:'ギリシャ料理', Korean:'韓国料理', Vietnamese:'ベトナム料理', Turkish:'トルコ料理', Moroccan:'モロッコ料理', Canadian:'カナダ料理', Irish:'アイルランド料理', Jamaican:'ジャマイカ料理', Malaysian:'マレーシア料理', Russian:'ロシア料理', Tunisian:'チュニジア料理', Egyptian:'エジプト料理', Kenyan:'ケニア料理', Polish:'ポーランド料理', Portuguese:'ポルトガル料理', Croatian:'クロアチア料理', Dutch:'オランダ料理', Filipino:'フィリピン料理', Ukrainian:'ウクライナ料理', Uruguayan:'ウルグアイ料理'};
+let rcp = store.get('rcp', {world:{at:0, items:[], i:0}, ai:{at:0, items:[], i:0, hint:''}});
+let rcpLoading = {world:false, ai:false}, rcpErr = {world:'', ai:''};
+
+/* ---------- Gemini ---------- */
+async function geminiRequest(body){
+  const model = (P.aiModel || 'gemini-flash-latest').trim();
+  let r;
+  try{
+    r = await fetchT(`https://generativelanguage.googleapis.com/v1beta/models/${enc(model)}:generateContent`, {
+      method:'POST', headers:{'Content-Type':'application/json', 'x-goog-api-key':P.geminiKey}, body:JSON.stringify(body)}, 60000);
+  }catch(e){ throw new Error('Gemini に接続できませんでした。ネットワーク接続をご確認ください'); }
+  if (!r.ok){
+    let msg = ''; try{ const j = await r.json(); msg = j.error && j.error.message || ''; }catch(e){}
+    if (r.status === 429) throw new Error('Gemini の利用回数の上限に達しました。しばらく待ってから、もう一度お試しください（429）');
+    if (r.status === 400 && /API key/i.test(msg)) throw new Error('Gemini の API キーが正しくありません。設定をご確認ください');
+    if (r.status === 403) throw new Error('この API キーでは Gemini を使用できません（403）');
+    if (r.status === 404) throw new Error(`モデル「${model}」が見つかりません（404）`);
+    throw new Error(`Gemini でエラーが発生しました（${r.status}）${msg ? '：' + msg : ''}`);
+  }
+  return r.json();
+}
+async function geminiJSON(prompt, temperature = .4){
+  const j = await geminiRequest({contents:[{role:'user', parts:[{text:prompt}]}], generationConfig:{temperature, responseMimeType:'application/json'}});
+  const c = j.candidates && j.candidates[0];
+  const t = c && c.content && c.content.parts ? c.content.parts.filter(p => p.text && !p.thought).map(p => p.text).join('') : '';
+  return JSON.parse(t.replace(/^```(?:json)?\s*|\s*```$/g, ''));
+}
+
+/* ---------- 世界のレシピ ---------- */
+async function loadWorld(force){
+  const w = rcp.world;
+  if (!force && w.items.length && Date.now() - w.at < 12 * 3600e3) return;
+  if (rcpLoading.world) return; rcpLoading.world = true; renderRecipe();
+  try{
+    const got = await Promise.all(Array.from({length:10}, () => fetchT('https://www.themealdb.com/api/json/v1/1/random.php').then(r => r.json()).catch(() => null)));
+    const seen = new Set(), items = [];
+    got.forEach(j => { const m = j && j.meals && j.meals[0]; if (m && !seen.has(m.idMeal)){ seen.add(m.idMeal);
+      items.push({id:m.idMeal, title:m.strMeal, en:m.strMeal, img:m.strMealThumb, cat:[MEAL_AREA[m.strArea] || m.strArea || '', MEAL_CAT[m.strCategory] || m.strCategory || ''].filter(Boolean).join('・')}); } });
+    if (!items.length) throw new Error('レシピを読み込めませんでした');
+    rcp.world = {at:Date.now(), items, i:0}; rcpErr.world = ''; store.set('rcp', rcp);
+    rcpLoading.world = false; renderRecipe();
+    await translateWorldTitles();
+  }catch(e){ rcpErr.world = e.name === 'AbortError' || e instanceof TypeError ? '通信できませんでした' : e.message; }
+  rcpLoading.world = false; renderRecipe();
+}
+let trBusy = false;
+async function translateWorldTitles(){
+  const items = rcp.world.items.filter(i => i.title === i.en);
+  if (!items.length || !P.geminiKey || trBusy) return;
+  trBusy = true;
+  try{ const ja = await geminiJSON(`次の料理名を、日本の家庭で通じる自然な日本語の料理名に翻訳し、同じ順番の JSON 配列（文字列のみ）で返してください：${JSON.stringify(items.map(i => i.en))}`, .2);
+    if (Array.isArray(ja)){ ja.forEach((t, i) => { if (items[i] && t) items[i].title = String(t); }); store.set('rcp', rcp); renderRecipe(); } }catch(e){}
+  trBusy = false;
+}
+async function worldDetail(it){
+  const key = 'rcpd:' + it.id;
+  let d = store.get(key, null);
+  if (d) return d;
+  const r = await fetchT(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${enc(it.id)}`);
+  const m = ((await r.json()).meals || [])[0]; if (!m) throw new Error('レシピが見つかりませんでした');
+  const ings = []; for (let i = 1; i <= 20; i++){ const n = (m['strIngredient' + i] || '').trim(); if (n) ings.push({name:n, amount:(m['strMeasure' + i] || '').trim()}); }
+  const steps = String(m.strInstructions || '').split(/\r?\n+/).map(s => s.replace(/^(step\s*)?\d+[.):]?\s*/i, '').trim()).filter(s => s.length > 2);
+  d = {title:it.title, en:m.strMeal, img:m.strMealThumb, cat:it.cat, ingredients:ings, steps, video:m.strYoutube || '', src:m.strSource || '', ja:false};
+  if (P.geminiKey){
+    try{
+      const t = await geminiJSON(`次の英語のレシピを、日本の家庭で作りやすい自然な日本語に翻訳してください。分量の単位（cup・tbsp・oz・lb など）は、グラム・ml・大さじ・小さじなど日本の単位に換算してください。
+次の JSON の形だけで返してください：{"title":"料理名","ingredients":[{"name":"材料","amount":"分量"}],"steps":["手順1","手順2"],"tip":"作るときのコツ（1〜2文）"}
+${JSON.stringify({title:m.strMeal, ingredients:ings, steps})}`, .2);
+      if (t && Array.isArray(t.steps)) Object.assign(d, {title:t.title || d.title, ingredients:t.ingredients || d.ingredients, steps:t.steps, tip:t.tip || '', ja:true});
+    }catch(e){ d.trErr = e.message; }
+  }
+  if (d.ja) store.set(key, d);
+  return d;
+}
+
+/* ---------- AI レシピ（Gemini） ---------- */
+function mealOfDay(){ const h = new Date().getHours(); return h < 10 ? '朝ごはん' : h < 15 ? '昼ごはん' : h < 17 ? 'おやつ' : '晩ごはん'; }
+async function loadAI(force, hint){
+  const a = rcp.ai;
+  if (hint == null) hint = a.hint || '';
+  if (!force && a.items.length && Date.now() - a.at < 6 * 3600e3 && a.hint === hint) return;
+  if (!P.geminiKey){ renderRecipe(); return; }
+  if (rcpLoading.ai) return; rcpLoading.ai = true; renderRecipe(); if (sheetKind === 'recipe') renderRecipeSheet();
+  try{
+    const now = new Date(), w = wx && wx.data && wx.data.current ? `${wmo(wx.data.current.weather_code)[0]}、気温${Math.round(wx.data.current.temperature_2m)}℃` : '';
+    const prev = a.items.map(x => x.title).slice(0, 6);
+    const list = await geminiJSON(`あなたは家庭料理の先生です。日本の家庭で作りやすいレシピを3つ考えてください。
+条件：今日は${now.getMonth() + 1}月${now.getDate()}日（${WD[now.getDay()]}）${w ? `、天気は${w}` : ''}。次の食事は「${mealOfDay()}」です。季節の食材を使ってください。
+${hint ? `利用者の希望：「${hint}」（この希望を最優先してください）` : ''}${prev.length ? `\n次の料理とは別のものにしてください：${prev.join('、')}` : ''}
+次の JSON 配列の形だけで返してください（説明文は不要です）：
+[{"title":"料理名","emoji":"料理を表す絵文字1つ","desc":"どんな料理か（40文字ほど）","time":調理時間（分・数字）,"servings":"2人分","ingredients":[{"name":"材料","amount":"分量"}],"steps":["手順1","手順2"],"tip":"おいしく作るコツ（1〜2文）"}]`, .9);
+    if (!Array.isArray(list) || !list.length) throw new Error('レシピを作れませんでした');
+    rcp.ai = {at:Date.now(), items:list.slice(0, 3).map(x => Object.assign({id:uid()}, x)), i:0, hint}; rcpErr.ai = ''; store.set('rcp', rcp);
+  }catch(e){ rcpErr.ai = e instanceof SyntaxError ? 'レシピを読み取れませんでした。もう一度お試しください' : e.message; }
+  rcpLoading.ai = false; renderRecipe(); if (sheetKind === 'recipe') renderRecipeSheet();
+}
+
+/* ---------- 表示 ---------- */
+function renderRecipeTabs(){ $$('#rcTabs button').forEach(b => b.classList.toggle('on', b.dataset.rc === B.recipe)); }
+function renderRecipe(){
+  renderRecipeTabs();
+  const b = $('#rcBody'), mode = B.recipe;
+  if (mode === 'ai' && !P.geminiKey){
+    b.innerHTML = `<div class="empty"><div class="big">✨</div>Gemini の API キーを登録すると、季節や天気に合わせたレシピを AI が考えます<button class="btn sm primary" data-rc-a="set">設定を開く</button></div>`; return;
+  }
+  const s = rcp[mode], it = s.items[s.i % Math.max(1, s.items.length)];
+  if (!it){
+    b.innerHTML = rcpLoading[mode] ? `<div class="empty"><div class="spin"></div>${mode === 'ai' ? 'AI がレシピを考えています…' : 'レシピを読み込んでいます'}</div>`
+      : `<div class="empty"><div class="big">🍳</div>${esc(rcpErr[mode] || 'レシピがありません')}<button class="btn sm primary" data-rc-a="reload">もう一度読み込む</button></div>`;
+    return;
+  }
+  const card = mode === 'world'
+    ? `<button class="rc-card" data-rc-a="open"><img src="${esc(it.img)}" alt=""><span class="ov"></span><span class="cap"><small>🌍 ${esc(it.cat || '世界のレシピ')}</small><b>${esc(it.title)}</b></span></button>`
+    : `<button class="rc-card" data-rc-a="open"><span class="rc-ai"><span class="em">${esc(it.emoji || '🍳')}</span><b>${esc(it.title)}</b><p>${esc(it.desc || '')}</p><small>⏱ ${esc(it.time || '?')}分　🍽 ${esc(it.servings || '')}　${esc(mealOfDay())}におすすめ</small></span></button>`;
+  b.innerHTML = card + `<div class="rc-btns"><button class="btn primary" data-rc-a="open">つくり方</button><button class="btn" data-rc-a="next" ${rcpLoading[mode] ? 'disabled' : ''}>${rcpLoading[mode] ? '読み込み中…' : mode === 'ai' ? 'ほかの案' : 'ほかのレシピ'}</button></div>`;
+}
+let rcpOpen = null;
+async function openRecipe(){
+  const mode = B.recipe, s = rcp[mode], it = s.items[s.i % Math.max(1, s.items.length)];
+  if (!it) return;
+  rcpOpen = {mode, it, d:mode === 'ai' ? it : null};
+  openSheet({kind:'recipe', title:mode === 'ai' ? 'AI レシピ' : '世界のレシピ', icon:mode === 'ai' ? '✨' : '🌍', narrow:true});
+  renderRecipeSheet();
+  if (mode === 'world'){
+    try{ rcpOpen.d = await worldDetail(it); }catch(e){ rcpOpen.err = e.message; }
+    if (sheetKind === 'recipe') renderRecipeSheet();
+  }
+}
+function renderRecipeSheet(){
+  const b = $('#shBody'); if (!b || !rcpOpen) return;
+  const {mode, it, d, err} = rcpOpen;
+  const ask = mode === 'ai' ? `<div class="ai-ask"><input class="input" id="aiHint" placeholder="材料や気分を入れて考え直す（例：鶏むね肉とキャベツ／あったまる汁物）" value="${esc(rcp.ai.hint || '')}" enterkeyhint="go"><button class="btn primary" id="aiGo" ${rcpLoading.ai ? 'disabled' : ''}>${rcpLoading.ai ? '考えています…' : '考える'}</button></div>` : '';
+  if (!d){ b.innerHTML = ask + `<div class="empty" style="min-height:300px">${err ? esc(err) : `<div class="spin"></div>${P.geminiKey ? 'つくり方を日本語にしています…' : 'つくり方を読み込んでいます'}`}</div>`; return; }
+  b.innerHTML = ask + `<div class="rcd">${mode === 'world' ? `<img class="rcd-hero" src="${esc(d.img)}" alt="">` : `<div class="rcd-aihero"><div class="em">${esc(d.emoji || '🍳')}</div><div style="font-size:15px;opacity:.95;margin-top:6px">${esc(d.desc || '')}</div></div>`}
+    <h1>${esc(d.title)}</h1>
+    <div class="meta">${mode === 'world' ? `🌍 ${esc(d.cat || '')}${d.en && d.en !== d.title ? `（${esc(d.en)}）` : ''}` : `⏱ ${esc(d.time || '?')}分　🍽 ${esc(d.servings || '')}`}</div>
+    ${d.trErr ? `<p class="hint">日本語に翻訳できませんでした（${esc(d.trErr)}）。英語のまま表示しています。</p>` : !d.ja && mode === 'world' && !P.geminiKey ? '<p class="hint">Gemini の API キーを登録すると、つくり方を日本語で表示できます。</p>' : ''}
+    <h4>材料</h4><div class="ing">${(d.ingredients || []).map(x => `<span>${esc(x.name)}</span><span>${esc(x.amount || '')}</span>`).join('')}</div>
+    <h4>つくり方</h4><ol>${(d.steps || []).map(s => `<li><span>${esc(s)}</span></li>`).join('')}</ol>
+    ${d.tip ? `<div class="tip">💡 ${esc(d.tip)}</div>` : ''}
+    <div style="display:flex;gap:10px;margin-top:18px;flex-wrap:wrap"><button class="btn" id="rcTimer">⏳ タイマーをセット</button>${d.video ? `<a class="btn" href="${esc(d.video)}" target="_blank" rel="noopener" style="text-decoration:none">▶ 作り方の動画</a>` : ''}</div>
+    ${mode === 'world' ? '<p class="hint" style="margin-top:12px">レシピ：TheMealDB</p>' : '<p class="hint" style="margin-top:12px">このレシピは AI（Gemini）が考えたものです。分量や加熱時間は様子を見て調整してください。</p>'}</div>`;
+  $('#rcTimer').onclick = () => { const m = Math.max(1, Math.min(180, parseInt(d.time, 10) || 10)); timer = {dur:m * 60000, endAt:Date.now() + m * 60000, remain:null}; saveTimer(); B.tm = 'timer'; savePrefs(); renderTimerTile(); closeSheet(); toast(`${m}分のタイマーを開始しました`); };
+  if (mode === 'ai'){
+    const go = async () => { const h = $('#aiHint').value.trim(); await loadAI(true, h); const s = rcp.ai; if (s.items[0]){ rcpOpen = {mode:'ai', it:s.items[0], d:s.items[0]}; renderRecipeSheet(); } };
+    $('#aiGo').onclick = go; $('#aiHint').onkeydown = e => { if (e.key === 'Enter') go(); };
+  }
+}
+$('#rcTabs').onclick = e => { const t = e.target.closest('[data-rc]'); if (!t) return; B.recipe = t.dataset.rc; savePrefs(); renderRecipe(); B.recipe === 'ai' ? loadAI() : loadWorld(); };
+$('#rcBody').addEventListener('click', e => {
+  const t = e.target.closest('[data-rc-a]'); if (!t) return;
+  const a = t.dataset.rcA, mode = B.recipe, s = rcp[mode];
+  if (a === 'set') return openSettings('keys');
+  if (a === 'open') return openRecipe();
+  if (a === 'reload') return mode === 'ai' ? loadAI(true) : loadWorld(true);
+  if (a === 'next'){
+    if (s.i + 1 < s.items.length){ s.i++; store.set('rcp', rcp); renderRecipe(); }
+    else mode === 'ai' ? loadAI(true) : loadWorld(true);
+  }
+});
+
+/* =========================================================
+   設定
+   ========================================================= */
+function syncStateText(){
+  if (!USER) return ACTIVE === 'guest' ? 'この端末だけに保存しています' : 'ログインしていません';
+  return {ok:'nicehome+ と同期しています', syncing:'同期しています…', error:'同期できませんでした', offline:'オフラインです（つながると同期します）', none:''}[Shared.state] || '';
+}
+function renderSettingsState(){ const s = $('#stSync'); if (s) s.textContent = syncStateText(); }
+function openSettings(focus){
+  openSheet({kind:'settings', title:'設定', icon:'⚙︎'});
+  renderSettings();
+  if (focus){ const t = $(`[data-sec="${focus}"]`); if (t) t.scrollIntoView({block:'start'}); }
+}
+function renderSettings(){
+  const b = $('#shBody'); if (!b) return;
+  const name = USER ? (USER.displayName || 'たいアカウント') : ACTIVE === 'guest' ? 'ゲスト' : '未ログイン';
+  const accents = ['#2f6fed', '#06c755', '#ff7a59', '#e2456f', '#8f3fd1', '#0ea5a5', '#f5a524', '#1b1d22'];
+  const thOpt = [['plus', 'nicehome+ と同じ'], ['auto', '自動（夜は暗く）'], ['light', 'ライト'], ['dark', 'ダーク']];
+  const secOpt = [['plus', 'nicehome+ と同じ'], ['on', '表示する'], ['off', '表示しない']];
+  b.innerHTML = `<div class="cols2"><div>
+    <div class="sgroup" data-sec="account"><h4>たいアカウント</h4>
+      <div class="srow"><div><b>${esc(name)}</b><div class="hint">${USER ? esc(USER.email || '') : ''}</div><div class="hint" id="stSync">${esc(syncStateText())}</div></div>
+        <div class="r">${USER ? '<button class="btn danger sm" id="stLogout">ログアウト</button>' : '<button class="btn primary sm" id="stLogin">ログイン</button>'}</div></div>
+      ${USER ? '<div class="srow"><span class="hint">天気の地域・Gemini と YouTube のキー・LINE の通知・アラームは、nicehome+ と共通です。ここで変えると nicehome+ にも反映されます。</span></div>' : ''}</div>
+    <div class="sgroup"><h4>見た目</h4>
+      <div class="srow col"><span>テーマ</span><div class="chips">${thOpt.map(([k, n]) => `<button class="chip ${B.theme === k ? 'on' : ''}" data-th="${k}">${n}</button>`).join('')}</div></div>
+      <div class="srow col"><span>アクセントカラー</span><div class="r" style="justify-content:flex-start"><button class="chip ${!B.accent ? 'on' : ''}" data-ac="">nicehome+ と同じ</button>
+        ${accents.map(c => `<button data-ac="${c}" aria-label="${c}" style="width:34px;height:34px;border-radius:50%;border:3px solid ${B.accent === c ? 'var(--text)' : 'transparent'};background:${c}"></button>`).join('')}
+        <input type="color" id="stAcc" value="${esc(cfg.accent())}" style="width:44px;height:36px;border:none;background:none"></div></div>
+      <div class="srow col"><span>時計の秒</span><div class="chips">${secOpt.map(([k, n]) => `<button class="chip ${B.sec === k ? 'on' : ''}" data-sec2="${k}">${n}</button>`).join('')}</div></div>
+      <div class="srow"><span>24時間表示<br><small class="hint">nicehome+ と共通です</small></span><label class="switch"><input type="checkbox" id="st24" ${P.hour12 ? '' : 'checked'}><span></span></label></div>
+      <div class="srow"><span>深夜（22時〜5時）は画面を少し暗くする</span><label class="switch"><input type="checkbox" id="stDim" ${B.nightDim ? 'checked' : ''}><span></span></label></div>
+      <div class="srow"><span>画面をつけたままにする</span><label class="switch"><input type="checkbox" id="stWake" ${B.wake ? 'checked' : ''}><span></span></label></div>
+    </div>
+    <div class="sgroup"><h4>通知</h4>
+      <div class="srow"><span>LINE が届いたら知らせる</span><label class="switch"><input type="checkbox" id="stLineN" ${P.lineNotif !== false ? 'checked' : ''}><span></span></label></div>
+      <div class="srow"><span>通知の音</span><label class="switch"><input type="checkbox" id="stSnd" ${P.notifSound !== false ? 'checked' : ''}><span></span></label></div>
+      <div class="srow"><span class="hint">LINE のペアリングコード：${P.lineCode ? `<b style="color:var(--text)">${esc((P.lineCode.match(/.{1,4}/g) || []).join('-'))}</b>（nicehome+ の設定で作成・変更できます）` : '未設定（nicehome+ の設定「LINE の通知（Android 経由）」で作成できます）'}</span></div>
+    </div>
+  </div><div>
+    <div class="sgroup" data-sec="place"><h4>天気の地域</h4>
+      <div class="srow col"><div style="display:flex;gap:8px"><input class="input" id="stPlace" placeholder="市区町村名（例：越谷、札幌）" value=""><button class="btn" id="stPlaceGo">検索</button></div>
+        <div class="hint">いまの地域：${esc(P.weatherName)}</div><div id="stPlaceRes" style="display:flex;flex-direction:column;gap:6px"></div></div>
+    </div>
+    <div class="sgroup" data-sec="keys"><h4>API キー</h4>
+      <div class="srow col"><span>Gemini API キー（AI レシピ・翻訳）</span><div style="display:flex;gap:8px"><input class="input" id="stGem" type="password" value="${esc(P.geminiKey)}" placeholder="未登録" autocomplete="off" autocapitalize="off"><button class="btn" data-show="stGem">表示</button></div>
+        <span class="hint">Google AI Studio で発行できます。</span></div>
+      <div class="srow col"><span>YouTube Data API キー（音楽）</span><div style="display:flex;gap:8px"><input class="input" id="stYt" type="password" value="${esc(P.youtubeKey)}" placeholder="未登録" autocomplete="off" autocapitalize="off"><button class="btn" data-show="stYt">表示</button></div>
+        <span class="hint">Google Cloud で「YouTube Data API v3」を有効にして発行したキーです。</span></div>
+      <div class="srow"><span class="hint">キーは${USER ? 'たいアカウント' : 'この端末'}に保存され、GitHub には公開されません。</span><button class="btn primary" id="stKeySave">保存</button></div>
+    </div>
+    <div class="sgroup"><h4>この画面について</h4>
+      <div class="srow"><span>nice home board<br><small class="hint">バージョン ${VERSION}</small></span><button class="btn sm" id="stReload">再読み込み</button></div>
+      <div class="srow"><span class="hint">iPad では、Safari の共有ボタンから「ホーム画面に追加」して開くと、上下のバーが消えて全画面で表示できます。</span></div>
+      <div class="srow"><span class="hint">天気：Open-Meteo／ニュース：NHK ニュース（RSS）・たいきニュース／レシピ：TheMealDB・Gemini／音楽：YouTube</span></div>
+    </div>
+  </div></div>`;
+}
+document.addEventListener('click', async e => {
+  if (sheetKind !== 'settings' || !e.target.closest('#shBody')) return;
+  const t = e.target.closest('button'); if (!t) return;
+  if (t.id === 'stLogout') return doLogout();
+  if (t.id === 'stLogin'){ LS.set('nhb_active', ''); location.reload(); return; }
+  if (t.id === 'stReload') return location.reload();
+  if (t.dataset.th){ B.theme = t.dataset.th; savePrefs(); applyTheme(); renderSettings(); }
+  if (t.dataset.ac != null){ B.accent = t.dataset.ac; savePrefs(); applyTheme(); renderSettings(); }
+  if (t.dataset.sec2){ B.sec = t.dataset.sec2; savePrefs(); renderClock(true); renderSettings(); }
+  if (t.dataset.show){ const i = $('#' + t.dataset.show); i.type = i.type === 'password' ? 'text' : 'password'; t.textContent = i.type === 'password' ? '表示' : '隠す'; }
+  if (t.id === 'stKeySave'){
+    const g = $('#stGem').value.trim(), y = $('#stYt').value.trim(), ych = y !== P.youtubeKey, gch = g !== P.geminiKey;
+    P.geminiKey = g; P.youtubeKey = y; savePlus(); toast('API キーを保存しました');
+    if (ych){ songs = null; loadSongs(true); }
+    if (gch){ renderRecipe(); if (B.recipe === 'ai') loadAI(); }
+  }
+  if (t.id === 'stPlaceGo'){
+    const q = $('#stPlace').value.trim(); if (!q) return;
+    const res = $('#stPlaceRes'); res.innerHTML = '<div class="hint">検索しています…</div>';
+    try{
+      const r = await fetchT(`https://geocoding-api.open-meteo.com/v1/search?name=${enc(q)}&count=6&language=ja&format=json`);
+      const j = await r.json(), list = j.results || [];
+      res.innerHTML = list.length ? list.map((p, i) => `<button class="btn" style="justify-content:flex-start" data-pl="${i}">📍 ${esc(p.name)}<small class="hint">${esc([p.admin1, p.country].filter(Boolean).join('・'))}</small></button>`).join('') : '<div class="hint">見つかりませんでした。別の名前でお試しください</div>';
+      res.onclick = ev => { const b2 = ev.target.closest('[data-pl]'); if (!b2) return; const p = list[+b2.dataset.pl];
+        Object.assign(P, {weatherName:p.name, weatherLat:+p.latitude.toFixed(4), weatherLon:+p.longitude.toFixed(4)}); savePlus();
+        toast(`天気の地域を「${p.name}」にしました`); loadWeather(true); renderClockFoot(); renderSettings(); };
+    }catch(err){ res.innerHTML = '<div class="hint">検索できませんでした。ネットワークをご確認ください</div>'; }
+  }
+});
+document.addEventListener('change', e => {
+  if (sheetKind !== 'settings') return;
+  const t = e.target;
+  if (t.id === 'st24'){ P.hour12 = !t.checked; savePlus(); renderClock(true); renderTimerTile(); }
+  if (t.id === 'stDim'){ B.nightDim = t.checked; savePrefs(); applyTheme(); }
+  if (t.id === 'stWake'){ B.wake = t.checked; savePrefs(); t.checked ? requestWake() : releaseWake(); }
+  if (t.id === 'stLineN'){ P.lineNotif = t.checked; savePlus(); }
+  if (t.id === 'stSnd'){ P.notifSound = t.checked; savePlus(); }
+  if (t.id === 'stAcc'){ B.accent = t.value; savePrefs(); applyTheme(); }
+});
+
+/* =========================================================
+   ログイン（たいアカウント）
+   ========================================================= */
+const MARK = `<svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="mg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5b8cff"/><stop offset="1" stop-color="#2f4fd6"/></linearGradient></defs>
+  <rect width="64" height="64" rx="16" fill="url(#mg)"/><rect x="12" y="12" width="22" height="24" rx="6" fill="#fff"/><rect x="38" y="12" width="14" height="11" rx="4" fill="#fff" opacity=".75"/>
+  <rect x="38" y="27" width="14" height="25" rx="5" fill="#fff" opacity=".9"/><rect x="12" y="40" width="22" height="12" rx="5" fill="#fff" opacity=".75"/></svg>`;
+function lgMsg(t, k = ''){ const m = $('#lgMsg'); m.textContent = t; m.className = 'lg-msg ' + k; }
+function authErr(e){
+  const c = e && e.code || '';
+  if (/invalid-credential|wrong-password|user-not-found|invalid-email/.test(c)) return 'メールアドレスまたはパスワードが正しくありません';
+  if (/popup-closed|cancelled-popup/.test(c)) return 'ログインが取り消されました';
+  if (/popup-blocked/.test(c)) return 'ポップアップがブロックされました。ブラウザの設定で許可してください';
+  if (/too-many-requests/.test(c)) return 'ログインの試行回数が多すぎます。しばらく待ってからお試しください';
+  if (/network/.test(c)) return 'ネットワークに接続できません';
+  return `ログインできませんでした（${c || e}）`;
+}
+function initLogin(){
+  $('#lgLogo').innerHTML = MARK + '<span>nice home board</span>';
+  $('#lgGoogle').onclick = async () => { if (!window.FBX) return lgMsg('たいアカウントに接続できません。ページを再読み込みしてください', 'err'); try{ await FBX.signInWithPopup(FBX.auth, FBX.googleProvider); }catch(e){ lgMsg(authErr(e), 'err'); } };
+  const sub = async () => {
+    const email = $('#lgEmail').value.trim(), pass = $('#lgPass').value;
+    if (!email || !pass) return lgMsg('メールアドレスとパスワードを入力してください', 'err');
+    if (!window.FBX) return lgMsg('たいアカウントに接続できません', 'err');
+    lgMsg('ログインしています…');
+    try{ await FBX.signInWithEmailAndPassword(FBX.auth, email, pass); }catch(e){ lgMsg(authErr(e), 'err'); }
+  };
+  $('#lgSubmit').onclick = sub; $('#lgPass').onkeydown = e => { if (e.key === 'Enter') sub(); };
+  $('#lgGuest').onclick = () => { LS.set('nhb_active', 'guest'); location.reload(); };
+}
+function initAccount(){
+  if (!ACTIVE) $('#login').hidden = false;
+  const start = () => FBX.onAuthStateChanged(FBX.auth, user => {
+    if (user){
+      if (ACTIVE !== user.uid){ LS.set('nhb_active', user.uid); location.reload(); return; }
+      USER = user; $('#login').hidden = true;
+      Shared.start(user.uid); lineListen(); renderLineTile();
+      if (sheetKind === 'settings') renderSettings();
+    } else {
+      USER = null; Shared.stop(); lineListen();
+      if (ACTIVE !== 'guest') $('#login').hidden = false;
+    }
+  });
+  if (window.FBX) start(); else window.addEventListener('fbx-ready', start, {once:true});
+}
+async function doLogout(){
+  if (!(await confirmDialog('ログアウトしてもよろしいですか？（nicehome+ のデータは消えません）', 'ログアウト', true))) return;
+  try{ await Shared.flush(); }catch(e){}
+  if (window.FBX){ try{ await FBX.signOut(FBX.auth); }catch(e){} }
+  try{ Object.keys(localStorage).filter(k => k.startsWith(NS)).forEach(k => localStorage.removeItem(k)); }catch(e){}
+  LS.set('nhb_active', ''); location.reload();
+}
+
+/* =========================================================
+   起動・時刻ごとの処理
+   ========================================================= */
+let lastSec = -1, lastHour = -1;
+function everySecond(now){
+  renderClock();
+  checkAlarms(now);
+  if (now.getSeconds() === 0){
+    const m = now.getMinutes();
+    if (m % 10 === 0) loadWeather();
+    if (m % 15 === 0) loadNews();
+    if (m % 3 === 0 && B.recipe === 'world' && !sheetKind && rcp.world.items.length > 1){ rcp.world.i = (rcp.world.i + 1) % rcp.world.items.length; store.set('rcp', rcp); renderRecipe(); }
+    if (m % 5 === 0) renderLineTile();
+    if (now.getHours() !== lastHour){ lastHour = now.getHours(); applyTheme(); loadHolidays(); }
+  }
+  if (now.getSeconds() % 5 === 0) lineListen();
+}
+setInterval(() => {
+  const now = new Date();
+  if (now.getSeconds() !== lastSec){ lastSec = now.getSeconds(); everySecond(now); }
+  tickTimers();
+}, 100);
+document.addEventListener('visibilitychange', () => { if (!document.hidden){ loadWeather(); loadNews(); renderClock(true); } });
+
+applyTheme();
+initLogin();
+initAccount();
+renderClock(true);
+renderWeather();
+renderNewsTabs(); renderNews();
+renderLineTile();
+renderTimerTile();
+renderMusic();
+renderRecipe();
+loadHolidays();
+loadWeather();
+loadNews();
+loadSongs();
+B.recipe === 'ai' ? loadAI() : loadWorld();
+newsAuto();
+requestWake();
+setTimeout(() => { if (!audioOK) $('#audioNotice').hidden = false; }, 2500);
+setTimeout(() => { $('#audioNotice').hidden = true; }, 12000);
+
+</script>
 </body>
 </html>
